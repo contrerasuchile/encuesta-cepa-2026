@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Encuesta CEPA 2026 — Informe de resultados</title>
+<script>document.documentElement.classList.add('js');</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,11 +66,50 @@ img { max-width: 100%; height: auto; display: block; }
 .divider { height: 1px; background: var(--ink-cream-4); }
 .on-cream .divider { background: var(--ink-dark-3); }
 
-section.block { padding: clamp(48px, 8vw, 96px) var(--pad-x); }
+section.block {
+  padding: clamp(48px, 8vw, 96px) var(--pad-x);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
 .on-navy   { background: var(--navy); color: var(--ink-cream); }
 .on-cream  { background: var(--cream); color: var(--ink-dark); }
 .on-cream .label { color: var(--ink-dark-2); }
 .on-cream .lead  { color: var(--ink-dark-2); }
+
+/* reveal-on-scroll: each section steps forward and settles as it enters view */
+html.js section.block {
+  opacity: 0;
+  transform: translateY(40px) scale(0.985);
+  transition: opacity 0.9s cubic-bezier(.16,.8,.34,1), transform 0.9s cubic-bezier(.16,.8,.34,1);
+}
+html.js section.block.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js section.block { opacity: 1; transform: none; transition: none; }
+}
+
+/* big watermark numeral for each hallazgo, parallaxed against the scroll */
+.hallazgo-num {
+  position: absolute;
+  top: clamp(-16px, -2vw, 4px);
+  right: clamp(8px, 4vw, 56px);
+  z-index: -1;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(6.5rem, 20vw, 14rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ink-cream);
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+}
+.on-cream .hallazgo-num { color: var(--ink-dark); opacity: 0.05; }
+@media (prefers-reduced-motion: reduce) { .hallazgo-num { transform: none !important; } }
 
 .eyebrow { color: var(--gold); margin-bottom: 14px; }
 .on-cream .eyebrow { color: var(--gold-2); }
@@ -259,6 +299,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 
 <!-- HALLAZGO 1 -->
 <section class="block on-navy">
+  <div class="hallazgo-num" aria-hidden="true">01</div>
   <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 1 de 12 · Ganas de participar</div>
   <div class="split aside-right">
     <div>
@@ -279,6 +320,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 
 <!-- HALLAZGO 2 -->
 <section class="block on-navy" style="background:var(--navy-2);">
+  <div class="hallazgo-num" aria-hidden="true">02</div>
   <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 2 de 12 · Disposición a participar</div>
   <h2 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:32px;">¿Participarías en actividades o comisiones del CEPA?</h2>
   <div class="stat-row cols-3">
@@ -304,6 +346,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 
 <!-- HALLAZGO 3 -->
 <section class="block on-navy">
+  <div class="hallazgo-num" aria-hidden="true">03</div>
   <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 3 de 12 · La comunicación importa</div>
   <div class="rule"></div>
   <h2 style="font-size:var(--fs-h1); margin-bottom:28px;">Comunicar es más que informar</h2>
@@ -315,6 +358,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 
 <!-- HALLAZGO 4 (bars) -->
 <section class="block on-navy" style="background:var(--navy-2);">
+  <div class="hallazgo-num" aria-hidden="true">04</div>
   <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 4 de 12 · Qué esperan del CEPA</div>
   <div class="split aside-right">
     <div>
@@ -356,6 +400,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 
 <!-- HALLAZGO 5 -->
 <section class="block on-navy">
+  <div class="hallazgo-num" aria-hidden="true">05</div>
   <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 5 de 12 · Lo que preocupa a las familias</div>
   <div class="rule"></div>
   <h2 style="font-size:var(--fs-h1); margin-bottom:28px;">La experiencia escolar, de forma completa</h2>
@@ -367,6 +412,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 
 <!-- HALLAZGO 6 -->
 <section class="block on-navy" style="background:var(--navy-2);">
+  <div class="hallazgo-num" aria-hidden="true">06</div>
   <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 6 de 12 · El rol que le dan al CEPA</div>
   <div class="rule"></div>
   <h2 style="font-size:var(--fs-h1); margin-bottom:28px;">Un puente, no un reemplazo</h2>
@@ -378,6 +424,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 
 <!-- HALLAZGO 7 (bars) -->
 <section class="block on-navy">
+  <div class="hallazgo-num" aria-hidden="true">07</div>
   <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 7 de 12 · Qué acciones esperan primero</div>
   <div class="split aside-right">
     <div>
@@ -417,6 +464,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 
 <!-- HALLAZGO 8 (bars) -->
 <section class="block on-navy" style="background:var(--navy-2);">
+  <div class="hallazgo-num" aria-hidden="true">08</div>
   <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 8 de 12 · Qué frena la participación</div>
   <div class="split aside-right">
     <div>
@@ -457,6 +505,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 
 <!-- HALLAZGO 9 -->
 <section class="block on-navy">
+  <div class="hallazgo-num" aria-hidden="true">09</div>
   <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 9 de 12 · Cómo evalúan al colegio</div>
   <div class="stat-row cols-2">
     <div>
@@ -476,6 +525,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 
 <!-- HALLAZGO 10 (NPS) -->
 <section class="block on-navy" style="background:var(--navy-2);">
+  <div class="hallazgo-num" aria-hidden="true">10</div>
   <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 10 de 12 · ¿Recomendarían el colegio?</div>
   <h2 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:32px;">Una lealtad moderada, con espacio para crecer</h2>
   <div class="stat-row cols-3">
@@ -511,6 +561,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 
 <!-- HALLAZGO 11 (ciclos) -->
 <section class="block on-cream">
+  <div class="hallazgo-num" aria-hidden="true">11</div>
   <div class="label" style="color:var(--gold-2); margin-bottom:16px;">Hallazgo 11 de 12 · Cada ciclo, su propia mirada</div>
   <h2 style="font-size:var(--fs-h1); margin-bottom:32px; color:var(--ink-dark);">Una misma encuesta, distintas experiencias</h2>
   <div class="ciclos-grid">
@@ -539,6 +590,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 
 <!-- HALLAZGO 12 (palabras) -->
 <section class="block on-navy">
+  <div class="hallazgo-num" aria-hidden="true">12</div>
   <div class="label" style="color:var(--gold); margin-bottom:24px;">Hallazgo 12 de 12 · En sus propias palabras</div>
   <div class="words-grid">
     <div class="words-col">
@@ -589,5 +641,61 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   <div class="sig">Centro de Padres y Apoderados<br>Colegio Compañía de María Seminario · 2026</div>
 </footer>
 
+<script>
+(function () {
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sections = document.querySelectorAll('section.block');
+  var nums = document.querySelectorAll('.hallazgo-num');
+
+  if (reduceMotion) {
+    sections.forEach(function (el) { el.classList.add('is-visible'); });
+    return;
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    sections.forEach(function (el) { io.observe(el); });
+  } else {
+    sections.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  if (nums.length) {
+    var ticking = false;
+    var vh = window.innerHeight;
+
+    function apply(el) {
+      var rect = el.getBoundingClientRect();
+      var offset = (rect.top + rect.height / 2 - vh / 2) * -0.12;
+      el.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
+    }
+
+    function update() {
+      nums.forEach(apply);
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', function () {
+      vh = window.innerHeight;
+      onScroll();
+    });
+    update();
+  }
+})();
+</script>
 </body>
 </html>
