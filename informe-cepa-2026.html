@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encuesta CEPA 2026 — Informe de resultados</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy:        #0E1C3A;
+  --navy-2:      #0A1730;
+  --cream:       #F4EEE1;
+  --cream-2:     #FFFFFF;
+  --ink-cream:   #F6F1E4;
+  --ink-cream-2: rgba(246,241,228,0.68);
+  --ink-cream-3: rgba(246,241,228,0.62);
+  --ink-cream-4: rgba(246,241,228,0.14);
+  --ink-dark:    #10203F;
+  --ink-dark-2:  rgba(16,32,63,0.62);
+  --ink-dark-3:  rgba(16,32,63,0.14);
+  --gold:        #D9A54A;
+  --gold-2:      #C6852A;
+
+  --f-display: 'Bricolage Grotesque', sans-serif;
+  --f-body:    'DM Sans', sans-serif;
+  --f-mono:    'DM Mono', monospace;
+
+  --pad-x: clamp(20px, 6vw, 110px);
+
+  --fs-hero:   clamp(2.6rem, 5vw + 1.4rem, 7rem);
+  --fs-jumbo:  clamp(3.2rem, 8vw + 1rem, 10.5rem);
+  --fs-h1:     clamp(1.9rem, 3.4vw + 1rem, 4.2rem);
+  --fs-h2:     clamp(1.5rem, 2.4vw + 1rem, 3rem);
+  --fs-h3:     clamp(1.15rem, 1vw + 0.9rem, 1.7rem);
+  --fs-stat-xl:clamp(2.8rem, 8vw + 1rem, 9rem);
+  --fs-stat-lg:clamp(2.3rem, 5vw + 1rem, 4.6rem);
+  --fs-stat:   clamp(1.9rem, 3.2vw + 1rem, 3.2rem);
+  --fs-lead:   clamp(1.05rem, 0.6vw + 0.9rem, 1.35rem);
+  --fs-body:   clamp(0.98rem, 0.3vw + 0.85rem, 1.15rem);
+  --fs-label:  clamp(0.68rem, 0.3vw + 0.6rem, 0.8rem);
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--navy-2);
+  font-family: var(--f-body);
+  color: var(--ink-cream);
+  line-height: 1.5;
+}
+img { max-width: 100%; height: auto; display: block; }
+
+.label {
+  font-family: var(--f-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.rule { width: 32px; height: 2px; background: var(--gold); margin-bottom: 24px; }
+.divider { height: 1px; background: var(--ink-cream-4); }
+.on-cream .divider { background: var(--ink-dark-3); }
+
+section.block { padding: clamp(48px, 8vw, 96px) var(--pad-x); }
+.on-navy   { background: var(--navy); color: var(--ink-cream); }
+.on-cream  { background: var(--cream); color: var(--ink-dark); }
+.on-cream .label { color: var(--ink-dark-2); }
+.on-cream .lead  { color: var(--ink-dark-2); }
+
+.eyebrow { color: var(--gold); margin-bottom: 14px; }
+.on-cream .eyebrow { color: var(--gold-2); }
+
+h1, h2, h3, .stat-num {
+  font-family: var(--f-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.lead { font-size: var(--fs-lead); color: var(--ink-cream-2); line-height: 1.55; }
+p { font-size: var(--fs-body); color: var(--ink-cream-2); line-height: 1.6; margin: 0; }
+.on-cream p, .on-cream .lead { color: var(--ink-dark-2); }
+
+.card {
+  background: var(--cream);
+  color: var(--ink-dark);
+  padding: clamp(20px, 3vw, 36px) clamp(22px, 3.5vw, 40px);
+}
+.card h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; }
+.card p { color: var(--ink-dark-2); }
+.on-cream .card { background: var(--cream-2); }
+
+.callout {
+  padding: clamp(20px, 3vw, 32px) clamp(22px, 3.5vw, 40px);
+  background: rgba(217,165,74,0.12);
+  border-left: 3px solid var(--gold);
+}
+.callout .label { color: var(--gold); margin-bottom: 10px; }
+.callout h3 { font-size: clamp(1.3rem, 2vw, 1.9rem); margin-bottom: 12px; }
+
+/* stat grids: stack on mobile, row on wider screens */
+.stat-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(28px, 4vw, 56px);
+  margin: clamp(28px, 4vw, 48px) 0;
+}
+@media (min-width: 720px) {
+  .stat-row.cols-2 { grid-template-columns: 1fr 1fr; }
+  .stat-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+}
+.stat-row > div { padding-bottom: clamp(20px, 3vw, 0px); border-bottom: 1px solid var(--ink-cream-4); }
+.on-cream .stat-row > div { border-bottom-color: var(--ink-dark-3); }
+@media (min-width: 720px) {
+  .stat-row > div { padding-bottom: 0; border-bottom: none; padding-right: clamp(24px, 3vw, 64px); border-right: 1px solid var(--ink-cream-4); }
+  .stat-row > div:last-child { border-right: none; padding-right: 0; }
+  .on-cream .stat-row > div { border-right-color: var(--ink-dark-3); }
+}
+.stat-num { font-size: var(--fs-stat); line-height: 1; }
+.stat-num.lg { font-size: var(--fs-stat-lg); }
+.stat-num.xl { font-size: var(--fs-stat-xl); line-height: 0.9; }
+.stat-cap { margin-top: 8px; }
+
+/* two-column content + sidebar layouts collapse to single column */
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+}
+@media (min-width: 860px) {
+  .split.side-narrow { grid-template-columns: 1.2fr 1fr; align-items: center; }
+  .split.side-even   { grid-template-columns: 1fr 1fr; align-items: center; }
+  .split.aside-right > :first-child { padding-right: clamp(32px,4vw,64px); border-right: 1px solid var(--ink-cream-4); }
+  .on-cream .split.aside-right > :first-child { border-right-color: var(--ink-dark-3); }
+}
+
+/* bar chart rows */
+.bars { display: flex; flex-direction: column; gap: 10px; }
+.bar-row .bar-label { display: flex; justify-content: space-between; font-family: var(--f-mono); font-size: var(--fs-label); color: var(--ink-cream-3); margin-bottom: 6px; }
+.bar-track { height: 10px; background: var(--ink-cream-4); position: relative; overflow: hidden; }
+.bar-fill { height: 100%; transform-origin: left; animation: barGrow 1s ease-out forwards; }
+@keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .bar-fill { animation: none; } }
+
+/* ciclos cards */
+.ciclos-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 640px)  { .ciclos-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1080px) { .ciclos-grid { grid-template-columns: repeat(4, 1fr); } }
+.ciclo-card { background: var(--cream-2); border-top: 4px solid var(--gold); padding: 26px 24px; display: flex; flex-direction: column; gap: 12px; }
+.ciclo-card.muted { border-top-color: rgba(16,32,63,0.25); }
+.ciclo-card h3 { font-size: 1.3rem; font-weight: 700; }
+.ciclo-card p { font-size: 0.95rem; }
+
+/* words grid */
+.words-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+@media (min-width: 720px) { .words-grid { grid-template-columns: 1fr 1fr; } }
+.words-col { display: flex; flex-direction: column; gap: 8px; }
+.word { font-family: var(--f-display); font-weight: 700; line-height: 1.05; }
+
+.bullets { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+.bullets div { display: grid; grid-template-columns: 20px 1fr; gap: 10px; font-size: var(--fs-body); color: var(--ink-cream-2); line-height: 1.55; }
+.bullets span:first-child { color: var(--gold); }
+
+header.hero {
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: clamp(40px, 8vw, 90px) var(--pad-x);
+}
+header.hero .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+header.hero .kicker { color: var(--gold); margin-bottom: 12px; }
+header.hero .title { font-size: var(--fs-jumbo); line-height: 0.92; }
+header.hero .title .accent { color: var(--gold); }
+header.hero .sub { max-width: 640px; margin-top: 28px; }
+.hero-panel { background: var(--cream); color: var(--ink-dark); padding: clamp(28px,4vw,48px); display: flex; flex-direction: column; gap: 24px; }
+.hero-panel .label { color: var(--ink-dark-2); }
+.hero-panel .stat-num { color: var(--ink-dark); }
+.hero-panel .stat-num:first-of-type { color: var(--gold-2); }
+
+footer.close {
+  background: var(--navy);
+  padding: clamp(40px, 6vw, 64px) var(--pad-x);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); color: var(--ink-cream-3); line-height: 1.5; }
+
+@media print {
+  section.block, header.hero, footer.close { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero on-navy">
+  <div class="top">
+    <img src="logo-footer.svg" alt="Logo CEPA" style="width:44px;">
+    <div class="label" style="color:var(--gold);">Junio 2026</div>
+  </div>
+  <div>
+    <div class="label kicker">Centro de Padres y Apoderados · Colegio Compañía de María Seminario</div>
+    <div class="title">Encuesta CEPA <span class="accent">2026</span></div>
+    <p class="lead sub">Así ven las familias al colegio y al Centro de Padres — una mirada honesta para seguir mejorando juntos.</p>
+  </div>
+  <div class="hero-panel">
+    <div class="label">Resultados de la encuesta</div>
+    <div class="stat-row cols-3" style="margin:0;">
+      <div style="border:none; padding:0;">
+        <div class="stat-num lg">285</div>
+        <div class="label stat-cap">familias respondieron</div>
+      </div>
+      <div style="border:none; padding:0;">
+        <div class="stat-num lg">51,2%</div>
+        <div class="label stat-cap">cobertura de matrícula</div>
+      </div>
+      <div style="border:none; padding:0;">
+        <div class="stat-num lg">12</div>
+        <div class="label stat-cap">hallazgos documentados</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- CONTEXTO -->
+<section class="block on-cream">
+  <div class="label" style="margin-bottom:16px;">Contexto</div>
+  <div class="rule"></div>
+  <div class="label eyebrow">Un momento de escucha comunitaria</div>
+  <h1 class="h1" style="font-size:var(--fs-h1); margin-bottom: 8px;">Quisimos saber qué piensan las familias</h1>
+  <div class="stat-row cols-3">
+    <div>
+      <div class="stat-num" style="color:var(--gold-2);">285</div>
+      <div class="label stat-cap">respuestas válidas</div>
+      <p style="margin-top:12px;">Familias del colegio que completaron la encuesta.</p>
+    </div>
+    <div>
+      <div class="stat-num" style="color:var(--ink-dark);">350</div>
+      <div class="label stat-cap">estudiantes reportados</div>
+      <p style="margin-top:12px;">Una misma familia puede tener más de un hijo o hija en el colegio.</p>
+    </div>
+    <div>
+      <div class="stat-num" style="color:var(--ink-dark);">51,2%</div>
+      <div class="label stat-cap">cobertura de matrícula</div>
+      <p style="margin-top:12px;">Más que una consulta puntual: un momento amplio de escucha.</p>
+    </div>
+  </div>
+  <div class="card" style="max-width:640px;">
+    <h3>¿Para qué hicimos esta encuesta?</h3>
+    <p>Para conocer qué esperan las familias del colegio y del nuevo Centro de Padres, y usar esa mirada para orientar nuestro trabajo.</p>
+  </div>
+</section>
+
+<!-- HALLAZGO 1 -->
+<section class="block on-navy">
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 1 de 12 · Ganas de participar</div>
+  <div class="split aside-right">
+    <div>
+      <div class="rule"></div>
+      <div class="label eyebrow">Valora fortalecer la participación familiar</div>
+      <div class="stat-num xl">99,3%</div>
+      <p class="lead" style="max-width:640px; margin-top:32px;">de las familias considera importante o muy importante fortalecer la participación familiar en la vida escolar.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:28px;">
+      <div class="card">
+        <h3>Lo que esto nos dice</h3>
+        <p>La participación no es un tema secundario: es una expectativa compartida por casi todas las familias.</p>
+      </div>
+      <p class="lead">La comunidad no está indiferente. Quiere participar, y necesita canales claros para hacerlo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HALLAZGO 2 -->
+<section class="block on-navy" style="background:var(--navy-2);">
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 2 de 12 · Disposición a participar</div>
+  <h2 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:32px;">¿Participarías en actividades o comisiones del CEPA?</h2>
+  <div class="stat-row cols-3">
+    <div>
+      <div class="stat-num lg">32,3%</div>
+      <div class="label stat-cap">Sí participaría</div>
+    </div>
+    <div>
+      <div class="stat-num lg" style="color:var(--gold);">44,2%</div>
+      <div class="label stat-cap">Tal vez participaría</div>
+    </div>
+    <div>
+      <div class="stat-num lg" style="color:var(--ink-cream-3);">23,5%</div>
+      <div class="label stat-cap">No participaría</div>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:16px;">
+    <div class="label">Lectura clave</div>
+    <h3>76,5% dice que sí o tal vez participaría</h3>
+    <p>El grupo "tal vez" es el más grande. Ahí hay una oportunidad enorme si ofrecemos formatos flexibles y objetivos claros.</p>
+  </div>
+</section>
+
+<!-- HALLAZGO 3 -->
+<section class="block on-navy">
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 3 de 12 · La comunicación importa</div>
+  <div class="rule"></div>
+  <h2 style="font-size:var(--fs-h1); margin-bottom:28px;">Comunicar es más que informar</h2>
+  <p class="lead" style="max-width:820px; margin-bottom:28px;">La comunicación aparece una y otra vez en las respuestas, abiertas y cerradas. Para las familias, comunicar bien significa generar claridad, confianza y cercanía.</p>
+  <div class="card" style="max-width:700px;">
+    <p style="font-size:var(--fs-body);">Comunicar bien es construir confianza, ordenar expectativas y hacer visible el trabajo del CEPA.</p>
+  </div>
+</section>
+
+<!-- HALLAZGO 4 (bars) -->
+<section class="block on-navy" style="background:var(--navy-2);">
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 4 de 12 · Qué esperan del CEPA</div>
+  <div class="split aside-right">
+    <div>
+      <div class="label" style="margin-bottom:14px;">Enfoque esperado del CEPA (% que lo mencionó)</div>
+      <div class="bars">
+        <div class="bar-row">
+          <div class="bar-label"><span>Representar inquietudes de apoderados</span><span style="color:var(--gold);">1°</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:88%; background:var(--gold);"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Fortalecer comunicación familia-colegio</span><span>68,4%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:68.4%; background:var(--ink-cream-2); animation-delay:.1s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Impulsar el bienestar escolar</span><span>65,6%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:65.6%; background:var(--ink-cream-2); animation-delay:.2s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Promover la convivencia escolar</span><span>65,6%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:65.6%; background:var(--ink-cream-2); animation-delay:.3s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Organizar actividades comunitarias</span><span>38,9%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:38.9%; background:var(--ink-cream-2); animation-delay:.4s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Apoyar iniciativas de apoderados</span><span>23,2%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:23.2%; background:var(--ink-cream-2); animation-delay:.5s;"></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:24px;">Un CEPA que represente, no solo que organice</h3>
+      <p class="lead" style="margin-bottom:24px;">Las familias no imaginan al CEPA solo como organizador de eventos. Lo ven como una instancia que representa, articula y canaliza los temas importantes.</p>
+      <div class="callout"><p style="color:var(--ink-cream);">Las familias esperan un CEPA que escuche, represente y gestione.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HALLAZGO 5 -->
+<section class="block on-navy">
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 5 de 12 · Lo que preocupa a las familias</div>
+  <div class="rule"></div>
+  <h2 style="font-size:var(--fs-h1); margin-bottom:28px;">La experiencia escolar, de forma completa</h2>
+  <p class="lead" style="max-width:820px; margin-bottom:28px;">Las familias miran al colegio en conjunto: aprendizaje, bienestar, convivencia, buen trato y claridad institucional — todo importa a la vez.</p>
+  <div class="card" style="max-width:700px;">
+    <p style="font-size:var(--fs-body);">Sus preocupaciones no son aisladas: hablan de la experiencia escolar completa.</p>
+  </div>
+</section>
+
+<!-- HALLAZGO 6 -->
+<section class="block on-navy" style="background:var(--navy-2);">
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 6 de 12 · El rol que le dan al CEPA</div>
+  <div class="rule"></div>
+  <h2 style="font-size:var(--fs-h1); margin-bottom:28px;">Un puente, no un reemplazo</h2>
+  <p class="lead" style="max-width:820px; margin-bottom:24px;">Las familias no esperan que el CEPA reemplace al colegio. Esperan que sea puente, articulador y voz organizada frente a la institución.</p>
+  <div style="padding-left:24px; border-left:3px solid var(--gold);">
+    <p class="lead" style="max-width:700px; color:var(--ink-cream);">El CEPA puede ayudar a ordenar la conversación entre familias y colegio.</p>
+  </div>
+</section>
+
+<!-- HALLAZGO 7 (bars) -->
+<section class="block on-navy">
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 7 de 12 · Qué acciones esperan primero</div>
+  <div class="split aside-right">
+    <div>
+      <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">Acciones esperadas del CEPA</h3>
+      <div class="bars">
+        <div class="bar-row">
+          <div class="bar-label"><span>Apoyo al bienestar estudiantil</span><span style="color:var(--gold);">1°</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:85%; background:var(--gold);"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Recoger opiniones de apoderados</span><span>50,5%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:50.5%; background:var(--ink-cream-2); animation-delay:.1s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Canales más claros de información</span><span>50,2%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:50.2%; background:var(--ink-cream-2); animation-delay:.2s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Trabajo con delegados de curso</span><span>40,4%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:40.4%; background:var(--ink-cream-2); animation-delay:.3s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Talleres para estudiantes</span><span>36,1%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:36.1%; background:var(--ink-cream-2); animation-delay:.4s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Actividades culturales y deportivas</span><span>30,5%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:30.5%; background:var(--ink-cream-2); animation-delay:.5s;"></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="lead">La demanda principal no es hacer más actividades, sino generar espacios con propósito: escuchar, informar, acompañar y canalizar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HALLAZGO 8 (bars) -->
+<section class="block on-navy" style="background:var(--navy-2);">
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 8 de 12 · Qué frena la participación</div>
+  <div class="split aside-right">
+    <div>
+      <div class="label" style="margin-bottom:14px;">Principales barreras declaradas</div>
+      <div class="bars">
+        <div class="bar-row">
+          <div class="bar-label"><span>Falta de tiempo</span><span style="color:var(--gold);">64,2%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:64.2%; background:var(--gold);"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Horarios poco compatibles</span><span>47,0%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:47%; background:var(--ink-cream-2); animation-delay:.1s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Sensación de que la opinión no incide</span><span>36,5%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:36.5%; background:var(--ink-cream-2); animation-delay:.2s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>No conocer las instancias de participación</span><span>32,6%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:32.6%; background:var(--ink-cream-2); animation-delay:.3s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Falta de información sobre actividades</span><span>30,9%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:30.9%; background:var(--ink-cream-2); animation-delay:.4s;"></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">La baja participación no es solo falta de interés</h3>
+      <p class="lead" style="margin-bottom:24px;">Responde a barreras prácticas y a dudas sobre si la opinión de las familias realmente incide.</p>
+      <div class="card">
+        <h3 style="font-size:1.3rem;">¿Qué podemos hacer?</h3>
+        <p>Flexibilizar formatos, comunicar mejor y mostrar con hechos que la opinión de las familias sí genera cambios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HALLAZGO 9 -->
+<section class="block on-navy">
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 9 de 12 · Cómo evalúan al colegio</div>
+  <div class="stat-row cols-2">
+    <div>
+      <div class="label" style="margin-bottom:14px;">Calidad del servicio educativo</div>
+      <div class="stat-num xl">69,4%</div>
+      <p class="lead" style="margin-top:20px;">Evaluación positiva de la calidad educativa general</p>
+    </div>
+    <div>
+      <div class="label" style="margin-bottom:14px;">Gestión de consultas y reclamos</div>
+      <div class="stat-num xl" style="color:var(--gold);">54,6%</div>
+      <p class="lead" style="margin-top:20px;">Evaluación positiva de la gestión de respuestas</p>
+    </div>
+  </div>
+  <div class="divider" style="margin:20px 0;"></div>
+  <p class="lead">Lectura clave — la calidad educativa se evalúa mejor que la gestión de consultas y reclamos: ahí hay una oportunidad clara de mejora.</p>
+</section>
+
+<!-- HALLAZGO 10 (NPS) -->
+<section class="block on-navy" style="background:var(--navy-2);">
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 10 de 12 · ¿Recomendarían el colegio?</div>
+  <h2 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:32px;">Una lealtad moderada, con espacio para crecer</h2>
+  <div class="stat-row cols-3">
+    <div>
+      <div class="stat-num lg" style="color:var(--gold);">32,0%</div>
+      <div class="label stat-cap">Detractores (1–6)</div>
+    </div>
+    <div>
+      <div class="stat-num lg">43,0%</div>
+      <div class="label stat-cap">Pasivos (7–8)</div>
+    </div>
+    <div>
+      <div class="stat-num lg" style="color:var(--ink-cream-3);">25,0%</div>
+      <div class="label stat-cap">Promotores (9–10)</div>
+    </div>
+  </div>
+  <div class="split side-even" style="margin-top:16px;">
+    <div style="display:flex; gap:clamp(24px,4vw,48px); align-items:center; flex-wrap:wrap;">
+      <div>
+        <div class="label" style="margin-bottom:8px;">NPS Global</div>
+        <div class="stat-num lg" style="color:var(--gold);">−7,0</div>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom:8px;">Promedio sobre 10</div>
+        <div class="stat-num lg">6,92</div>
+      </div>
+    </div>
+    <div class="card">
+      <p>No hay rechazo generalizado, pero sí una recomendación frágil. El grupo pasivo es el más grande: ahí está la oportunidad de mejora.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HALLAZGO 11 (ciclos) -->
+<section class="block on-cream">
+  <div class="label" style="color:var(--gold-2); margin-bottom:16px;">Hallazgo 11 de 12 · Cada ciclo, su propia mirada</div>
+  <h2 style="font-size:var(--fs-h1); margin-bottom:32px; color:var(--ink-dark);">Una misma encuesta, distintas experiencias</h2>
+  <div class="ciclos-grid">
+    <div class="ciclo-card">
+      <div class="label">Prebásica</div>
+      <h3>La más optimista</h3>
+      <p>Mejor evaluación del colegio y de la calidad educativa. Preocupa el bienestar emocional de los niños.</p>
+    </div>
+    <div class="ciclo-card muted">
+      <div class="label">Primer Ciclo</div>
+      <h3>La más exigente en comunicación</h3>
+      <p>Pide más comunicación familia-colegio y mira con más exigencia la gestión institucional.</p>
+    </div>
+    <div class="ciclo-card muted">
+      <div class="label">Segundo Ciclo</div>
+      <h3>La más crítica</h3>
+      <p>Mayor participación en la encuesta y NPS más bajo. Pide representación real e incidencia.</p>
+    </div>
+    <div class="ciclo-card muted">
+      <div class="label">Enseñanza Media</div>
+      <h3>La que pide ser incluida</h3>
+      <p>Menor cobertura relativa, pero alta valoración de la participación familiar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HALLAZGO 12 (palabras) -->
+<section class="block on-navy">
+  <div class="label" style="color:var(--gold); margin-bottom:24px;">Hallazgo 12 de 12 · En sus propias palabras</div>
+  <div class="words-grid">
+    <div class="words-col">
+      <div class="label" style="margin-bottom:8px;">Lo que esperan del CEPA</div>
+      <div class="word" style="font-size:2.6rem;">Comunicación</div>
+      <div class="word" style="font-size:2rem; color:var(--gold);">Compromiso</div>
+      <div class="word" style="font-size:2.3rem;">Representación</div>
+      <div class="word" style="font-size:1.7rem; color:var(--ink-cream-3); font-weight:600;">Gestión</div>
+      <div class="word" style="font-size:1.9rem; font-weight:700;">Comunidad</div>
+      <div class="word" style="font-size:1.5rem; color:var(--ink-cream-3); font-weight:600;">Transparencia</div>
+    </div>
+    <div class="words-col">
+      <div class="label" style="margin-bottom:8px;">Propuestas concretas</div>
+      <div class="word" style="font-size:2.1rem; font-weight:700;">Talleres</div>
+      <div class="word" style="font-size:1.8rem; color:var(--ink-cream-3); font-weight:600;">Actividades</div>
+      <div class="word" style="font-size:2.3rem; color:var(--gold); line-height:1.1;">Convivencia escolar</div>
+      <div class="word" style="font-size:1.7rem; color:var(--ink-cream-3); font-weight:600;">Calidad académica</div>
+      <div class="word" style="font-size:1.55rem; color:var(--ink-cream-3); font-weight:600;">Bienestar emocional</div>
+    </div>
+  </div>
+</section>
+
+<!-- SÍNTESIS -->
+<section class="block on-navy" style="background:var(--navy-2);">
+  <div class="label" style="color:var(--gold); margin-bottom:24px;">Síntesis</div>
+  <div class="split side-even">
+    <div>
+      <div class="rule"></div>
+      <h2 style="font-size:var(--fs-h2); margin-bottom:28px;">Lo que aprendimos</h2>
+      <div class="bullets">
+        <div><span>—</span><span>Una comunidad que quiere ser escuchada y ve al CEPA como un espacio posible para eso.</span></div>
+        <div><span>—</span><span>Las familias esperan representación, comunicación clara, bienestar, convivencia y acciones concretas.</span></div>
+        <div><span>—</span><span>Existen barreras reales para participar: tiempo, horarios y dudas sobre si su opinión incide.</span></div>
+        <div><span>—</span><span>La gestión de consultas y reclamos genera más tensión que la calidad educativa general.</span></div>
+        <div><span>—</span><span>Cada ciclo escolar mira las cosas distinto — las respuestas deben considerar esas diferencias.</span></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:var(--f-display); font-weight:800; font-size:4rem; color:var(--gold); line-height:0.6; margin-bottom:16px;">"</div>
+      <h3 style="font-size:1.6rem; font-weight:600; letter-spacing:-0.01em; margin-bottom:20px;">El interés ya existe.</h3>
+      <p class="lead">El desafío es convertirlo en participación organizada, comunicación efectiva y representación real.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="close on-navy">
+  <img src="logo-footer.svg" alt="Logo CEPA" style="width:36px; opacity:0.85;">
+  <div class="sig">Centro de Padres y Apoderados<br>Colegio Compañía de María Seminario · 2026</div>
+</footer>
+
+</body>
+</html>
