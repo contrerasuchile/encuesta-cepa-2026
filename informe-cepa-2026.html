@@ -243,6 +243,22 @@ p { font-size: var(--fs-body); color: var(--ink-cream-2); line-height: 1.6; marg
 .share-chart-tooltip strong { display: block; font-family: var(--f-display); font-weight: 800; font-size: 1.05rem; color: var(--ink-dark); }
 .share-chart-tooltip span { color: var(--ink-dark-2); }
 
+/* NPS gauge (Hallazgo 10) */
+.gauge-chart { position: relative; margin: clamp(24px, 4vw, 40px) 0 clamp(16px, 2.5vw, 24px); display: flex; flex-direction: column; align-items: center; max-width: 380px; }
+.gauge-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transform: scale(0.88);
+  transition: opacity 0.9s cubic-bezier(.16,.8,.34,1), transform 0.9s cubic-bezier(.16,.8,.34,1);
+}
+.gauge-svg.is-visible { opacity: 1; transform: scale(1); }
+@media (prefers-reduced-motion: reduce) {
+  .gauge-svg { opacity: 1; transform: none; transition: none; }
+}
+.gauge-score { text-align: center; margin-top: 2px; }
+
 /* ciclos cards */
 .ciclos-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
 @media (min-width: 640px)  { .ciclos-grid { grid-template-columns: 1fr 1fr; } }
@@ -428,6 +444,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 
   <div class="card" style="max-width:700px; margin-top:32px;">
+        <h3>📌 Lo que nos dice esto</h3>
     <p style="font-size:var(--fs-body);">Comunicar bien es construir confianza, ordenar expectativas y hacer visible el trabajo del CEPA.</p>
   </div>
 </section>
@@ -484,6 +501,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   <h2 style="font-size:var(--fs-h1); margin-bottom:28px;">La experiencia escolar, de forma completa</h2>
   <p class="lead" style="max-width:820px; margin-bottom:28px;">Las familias miran al colegio en conjunto: aprendizaje, bienestar, convivencia, buen trato y claridad institucional — todo importa a la vez.</p>
   <div class="card" style="max-width:700px;">
+          <h3>📌 Lo que nos dice esto</h3>
     <p style="font-size:var(--fs-body);">Sus preocupaciones no son aisladas: hablan de la experiencia escolar completa.</p>
   </div>
 </section>
@@ -608,30 +626,39 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   <h2 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:32px;">Una lealtad moderada, con espacio para crecer</h2>
   <div class="stat-row cols-3">
     <div>
-      <div class="stat-num lg" style="color:var(--gold);">32,0%</div>
+      <div class="stat-num lg" style="color:#C24A5C;">32,0%</div>
       <div class="label stat-cap">Detractores (1–6)</div>
     </div>
     <div>
-      <div class="stat-num lg">43,0%</div>
+      <div class="stat-num lg" style="color:#C6852A;">43,0%</div>
       <div class="label stat-cap">Pasivos (7–8)</div>
     </div>
     <div>
-      <div class="stat-num lg" style="color:var(--ink-cream-3);">25,0%</div>
+      <div class="stat-num lg" style="color:#3E9B7A;">25,0%</div>
       <div class="label stat-cap">Promotores (9–10)</div>
     </div>
   </div>
   <div class="split side-even" style="margin-top:16px;">
-    <div style="display:flex; gap:clamp(24px,4vw,48px); align-items:center; flex-wrap:wrap;">
-      <div>
-        <div class="label" style="margin-bottom:8px;">NPS Global</div>
+    <div class="gauge-chart">
+      <svg class="gauge-svg" viewBox="0 0 300 172" role="img" aria-label="Distribución de recomendación: 32,0% detractores, 43,0% pasivos, 25,0% promotores; NPS global −7,0">
+        <path d="M20,145 A130,130 0 0,1 80.35,35.24 L101.78,69.01 A90,90 0 0,0 60,145 Z" fill="#C24A5C"></path>
+        <path d="M80.35,35.24 A130,130 0 0,1 241.92,53.08 L213.64,81.36 A90,90 0 0,0 101.78,69.01 Z" fill="#C6852A"></path>
+        <path d="M241.92,53.08 A130,130 0 0,1 280,145 L240,145 A90,90 0 0,0 213.64,81.36 Z" fill="#3E9B7A"></path>
+        <text x="53.61" y="92.01" text-anchor="middle" class="pie-label-val">32,0%</text>
+        <text x="53.61" y="106.01" text-anchor="middle" class="pie-label-cat">DETRACTORES</text>
+        <text x="162.07" y="35.67" text-anchor="middle" class="pie-label-val">43,0%</text>
+        <text x="162.07" y="49.67" text-anchor="middle" class="pie-label-cat">PASIVOS</text>
+        <text x="251.63" y="102.90" text-anchor="middle" class="pie-label-val">25,0%</text>
+        <text x="251.63" y="116.90" text-anchor="middle" class="pie-label-cat">PROMOTORES</text>
+      </svg>
+      <div class="gauge-score">
+        <div class="label" style="margin-bottom:6px;">NPS Global</div>
         <div class="stat-num lg" style="color:var(--gold);">−7,0</div>
-      </div>
-      <div>
-        <div class="label" style="margin-bottom:8px;">Promedio sobre 10</div>
-        <div class="stat-num lg">6,92</div>
+        <div class="label" style="margin-top:10px; color:var(--ink-cream-3);">Promedio sobre 10 · 6,92</div>
       </div>
     </div>
     <div class="card">
+            <h3>📌 Lo que nos dice esto</h3>
       <p>No hay rechazo generalizado, pero sí una recomendación frágil. El grupo pasivo es el más grande: ahí está la oportunidad de mejora.</p>
     </div>
   </div>
@@ -823,6 +850,28 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
         seg.addEventListener('focus', function () { showTooltip(seg); });
         seg.addEventListener('blur', hideTooltip);
       });
+    }
+  });
+
+  // NPS gauge (Hallazgo 10): scroll-triggered reveal, needle sweeps in from −100
+  document.querySelectorAll('.gauge-chart').forEach(function (gaugeChart) {
+    var gaugeSvg = gaugeChart.querySelector('.gauge-svg');
+    if (!gaugeSvg) return;
+
+    function revealGauge() { gaugeSvg.classList.add('is-visible'); }
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      revealGauge();
+    } else {
+      var gaugeIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            revealGauge();
+            gaugeIo.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      gaugeIo.observe(gaugeSvg);
     }
   });
 })();
