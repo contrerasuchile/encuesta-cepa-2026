@@ -268,11 +268,29 @@ p { font-size: var(--fs-body); color: var(--ink-cream-2); line-height: 1.6; marg
 .ciclo-card h3 { font-size: 1.3rem; font-weight: 700; }
 .ciclo-card p { font-size: 0.95rem; }
 
-/* words grid */
-.words-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
-@media (min-width: 720px) { .words-grid { grid-template-columns: 1fr 1fr; } }
-.words-col { display: flex; flex-direction: column; gap: 8px; }
-.word { font-family: var(--f-display); font-weight: 700; line-height: 1.05; }
+/* word cloud (Hallazgo 12): size encodes mention frequency */
+.word-cloud { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 6px 22px; max-width: 980px; margin: clamp(24px, 4vw, 40px) auto 0; text-align: center; }
+.cloud-word { font-family: var(--f-display); font-weight: 800; letter-spacing: -0.01em; line-height: 1; cursor: default; }
+
+/* rotating quote carousel (Hallazgo 12): cycles through open-ended responses */
+.quote-carousel { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 980px; margin: 0 auto; }
+@media (min-width: 780px) { .quote-carousel { grid-template-columns: 1fr 1fr 1fr; align-items: start; } }
+.split .quote-carousel { grid-template-columns: 1fr; margin: 0; max-width: none; }
+.quote-slot { min-height: 110px; }
+.quote-slot blockquote {
+  margin: 0;
+  font-family: var(--f-body);
+  font-size: 1.4rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--ink-cream-2);
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+.quote-slot blockquote.is-fading { opacity: 0; }
+.quote-slot blockquote::before { content: "\201C"; color: var(--gold); font-family: var(--f-display); font-weight: 800; font-style: normal; }
+.quote-slot blockquote::after { content: "\201D"; color: var(--gold); font-family: var(--f-display); font-weight: 800; font-style: normal; }
+@media (prefers-reduced-motion: reduce) { .quote-slot blockquote { transition: none; } }
 
 .bullets { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
 .bullets div { display: grid; grid-template-columns: 20px 1fr; gap: 10px; font-size: var(--fs-body); color: var(--ink-cream-2); line-height: 1.55; }
@@ -410,10 +428,51 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 3 -->
-<section class="block on-navy">
+<!-- HALLAZGO 3 (bars) -->
+<section class="block on-navy" style="background:var(--navy-2);">
   <div class="hallazgo-num" aria-hidden="true">03</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 3 de 12 · La comunicación importa</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 3 de 12 · Qué frena la participación</div>
+  <div class="split aside-right">
+    <div>
+      <div class="label" style="margin-bottom:14px;">Principales barreras declaradas</div>
+      <div class="bars">
+        <div class="bar-row">
+          <div class="bar-label"><span>Falta de tiempo</span><span style="color:var(--gold);">64,2%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:64.2%; background:var(--gold);"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Horarios poco compatibles</span><span>47,0%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:47%; background:var(--ink-cream-2); animation-delay:.1s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Sensación de que la opinión no incide</span><span>36,5%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:36.5%; background:var(--ink-cream-2); animation-delay:.2s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>No conocer las instancias de participación</span><span>32,6%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:32.6%; background:var(--ink-cream-2); animation-delay:.3s;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Falta de información sobre actividades</span><span>30,9%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:30.9%; background:var(--ink-cream-2); animation-delay:.4s;"></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">La baja participación no es solo falta de interés</h3>
+      <p class="lead" style="margin-bottom:24px;">Responde a barreras prácticas y a dudas sobre si la opinión de las familias realmente incide.</p>
+      <div class="card">
+        <h3 style="font-size:1.3rem;">¿Qué podemos hacer?</h3>
+        <p>Flexibilizar formatos, comunicar mejor y mostrar con hechos que la opinión de las familias sí genera cambios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HALLAZGO 4 -->
+<section class="block on-navy">
+  <div class="hallazgo-num" aria-hidden="true">04</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 4 de 12 · La comunicación importa</div>
   <div class="rule"></div>
   <h2 style="font-size:var(--fs-h1); margin-bottom:28px;">Comunicar es más que informar</h2>
   <p class="lead" style="max-width:820px; margin-bottom:28px;">La comunicación aparece una y otra vez en las respuestas, abiertas y cerradas. Para las familias, comunicar bien significa generar claridad, confianza y cercanía.</p>
@@ -449,10 +508,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 4 (bars) -->
+<!-- HALLAZGO 5 (bars) -->
 <section class="block on-navy" style="background:var(--navy-2);">
-  <div class="hallazgo-num" aria-hidden="true">04</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 4 de 12 · Qué esperan del CEPA las familias</div>
+  <div class="hallazgo-num" aria-hidden="true">05</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 5 de 12 · Qué esperan del CEPA las familias</div>
   <div class="split aside-right">
     <div>
       <div class="label" style="margin-bottom:14px;">Enfoque esperado del CEPA</div>
@@ -489,13 +548,13 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 5 (bars) -->
+<!-- HALLAZGO 6 (bars) -->
 <section class="block on-navy">
-  <div class="hallazgo-num" aria-hidden="true">05</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 5 de 12 · Lo que preocupa a las familias</div>
+  <div class="hallazgo-num" aria-hidden="true">06</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 6 de 12 · Lo que preocupa a las familias</div>
   <div class="split aside-right">
     <div>
-      <div class="label" style="margin-bottom:14px;">Temas que más preocupan (% que lo mencionó)</div>
+      <div class="label" style="margin-bottom:14px;">Temas que más preocupan a las familias hoy</div>
       <div class="bars">
         <div class="bar-row">
           <div class="bar-label"><span>Proyecto Educativo y su implementación</span><span style="color:var(--gold);">57,2%</span></div>
@@ -550,10 +609,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 6 (bars) -->
+<!-- HALLAZGO 7 (bars) -->
 <section class="block on-navy" style="background:var(--navy-2);">
-  <div class="hallazgo-num" aria-hidden="true">06</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 6 de 12 · El rol que le dan al CEPA</div>
+  <div class="hallazgo-num" aria-hidden="true">07</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 7 de 12 · El rol que le dan al CEPA</div>
   <div class="split aside-right">
     <div>
       <div class="label" style="margin-bottom:14px;">Funciones que esperan del CEPA (% que la mencionó)</div>
@@ -595,13 +654,13 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 7 (bars) -->
+<!-- HALLAZGO 8 (bars) -->
 <section class="block on-navy">
-  <div class="hallazgo-num" aria-hidden="true">07</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 7 de 12 · Qué acciones esperan primero</div>
+  <div class="hallazgo-num" aria-hidden="true">08</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 8 de 12 · Acciones más urgentes</div>
   <div class="split aside-right">
     <div>
-      <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">Acciones esperadas del CEPA</h3>
+      <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">Acciones prioritarias esperadas del CEPA</h3>
       <div class="bars">
         <div class="bar-row">
           <div class="bar-label"><span>Apoyo al bienestar estudiantil</span><span style="color:var(--gold);">50,5%</span></div>
@@ -631,47 +690,6 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 8 (bars) -->
-<section class="block on-navy" style="background:var(--navy-2);">
-  <div class="hallazgo-num" aria-hidden="true">08</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 8 de 12 · Qué frena la participación</div>
-  <div class="split aside-right">
-    <div>
-      <div class="label" style="margin-bottom:14px;">Principales barreras declaradas</div>
-      <div class="bars">
-        <div class="bar-row">
-          <div class="bar-label"><span>Falta de tiempo</span><span style="color:var(--gold);">64,2%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:64.2%; background:var(--gold);"></div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label"><span>Horarios poco compatibles</span><span>47,0%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:47%; background:var(--ink-cream-2); animation-delay:.1s;"></div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label"><span>Sensación de que la opinión no incide</span><span>36,5%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:36.5%; background:var(--ink-cream-2); animation-delay:.2s;"></div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label"><span>No conocer las instancias de participación</span><span>32,6%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:32.6%; background:var(--ink-cream-2); animation-delay:.3s;"></div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label"><span>Falta de información sobre actividades</span><span>30,9%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:30.9%; background:var(--ink-cream-2); animation-delay:.4s;"></div></div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">La baja participación no es solo falta de interés</h3>
-      <p class="lead" style="margin-bottom:24px;">Responde a barreras prácticas y a dudas sobre si la opinión de las familias realmente incide.</p>
-      <div class="card">
-        <h3 style="font-size:1.3rem;">¿Qué podemos hacer?</h3>
-        <p>Flexibilizar formatos, comunicar mejor y mostrar con hechos que la opinión de las familias sí genera cambios.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- HALLAZGO 9 -->
 <section class="block on-navy">
   <div class="hallazgo-num" aria-hidden="true">09</div>
@@ -689,7 +707,12 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
     </div>
   </div>
   <div class="divider" style="margin:20px 0;"></div>
-  <p class="lead">Lectura clave — la calidad educativa se evalúa mejor que la gestión de consultas y reclamos: ahí hay una oportunidad clara de mejora.</p>
+  
+
+          <div class="callout">
+            <div class="label">📌 Lectura clave</div>
+        <p style="color:var(--ink-cream);">La calidad educativa se evalúa mejor que la gestión de consultas y reclamos: ahí hay una oportunidad clara de mejora para el Colegio y como CEPA un llamado a asumir nuestro rol mediador.</p></div>
+
 </section>
 
 <!-- HALLAZGO 10 (NPS) -->
@@ -697,7 +720,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   <div class="hallazgo-num" aria-hidden="true">10</div>
   <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 10 de 12 · ¿Recomendarían el colegio?</div>
   <h2 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:32px;">Una lealtad moderada, con espacio para crecer</h2>
-  <div class="stat-row cols-3">
+  <!-- <div class="stat-row cols-3">
     <div>
       <div class="stat-num lg" style="color:#C24A5C;">32,0%</div>
       <div class="label stat-cap">Detractores (1–6)</div>
@@ -710,7 +733,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
       <div class="stat-num lg" style="color:#3E9B7A;">25,0%</div>
       <div class="label stat-cap">Promotores (9–10)</div>
     </div>
-  </div>
+  </div> -->
   <div class="split side-even" style="margin-top:16px;">
     <div class="gauge-chart">
       <svg class="gauge-svg" viewBox="0 0 300 172" role="img" aria-label="Distribución de recomendación: 32,0% detractores, 43,0% pasivos, 25,0% promotores; NPS global −7,0">
@@ -718,11 +741,11 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
         <path d="M80.35,35.24 A130,130 0 0,1 241.92,53.08 L213.64,81.36 A90,90 0 0,0 101.78,69.01 Z" fill="#C6852A"></path>
         <path d="M241.92,53.08 A130,130 0 0,1 280,145 L240,145 A90,90 0 0,0 213.64,81.36 Z" fill="#3E9B7A"></path>
         <text x="53.61" y="92.01" text-anchor="middle" class="pie-label-val">32,0%</text>
-        <text x="53.61" y="106.01" text-anchor="middle" class="pie-label-cat">DETRACTORES</text>
+        <text x="53.61" y="106.01" text-anchor="middle" class="pie-label-cat">DETRACTORES (1–6)</text>
         <text x="162.07" y="35.67" text-anchor="middle" class="pie-label-val">43,0%</text>
-        <text x="162.07" y="49.67" text-anchor="middle" class="pie-label-cat">PASIVOS</text>
+        <text x="162.07" y="49.67" text-anchor="middle" class="pie-label-cat">PASIVOS (7–8)</text>
         <text x="251.63" y="102.90" text-anchor="middle" class="pie-label-val">25,0%</text>
-        <text x="251.63" y="116.90" text-anchor="middle" class="pie-label-cat">PROMOTORES</text>
+        <text x="251.63" y="116.90" text-anchor="middle" class="pie-label-cat">PROMOTORES (9–10)</text>
       </svg>
       <div class="gauge-score">
         <div class="label" style="margin-bottom:6px;">NPS Global</div>
@@ -732,7 +755,8 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
     </div>
     <div class="card">
             <h3>📌 Lo que nos dice esto</h3>
-      <p>No hay rechazo generalizado, pero sí una recomendación frágil. El grupo pasivo es el más grande: ahí está la oportunidad de mejora.</p>
+      <p>Frente a la pregunta de "¿qué tan dispuesto está a recomendar el Colegio a amigos o familiares?", la respuesta es una recomendación frágil.</p>
+      <p>El grupo pasivo es el más grande: ahí está la oportunidad de mejora.</p>
     </div>
   </div>
 </section>
@@ -769,24 +793,43 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 <!-- HALLAZGO 12 (palabras) -->
 <section class="block on-navy">
   <div class="hallazgo-num" aria-hidden="true">12</div>
-  <div class="label" style="color:var(--gold); margin-bottom:24px;">Hallazgo 12 de 12 · En sus propias palabras</div>
-  <div class="words-grid">
-    <div class="words-col">
-      <div class="label" style="margin-bottom:8px;">Lo que esperan del CEPA</div>
-      <div class="word" style="font-size:2.6rem;">Comunicación</div>
-      <div class="word" style="font-size:2rem; color:var(--gold);">Compromiso</div>
-      <div class="word" style="font-size:2.3rem;">Representación</div>
-      <div class="word" style="font-size:1.7rem; color:var(--ink-cream-3); font-weight:600;">Gestión</div>
-      <div class="word" style="font-size:1.9rem; font-weight:700;">Comunidad</div>
-      <div class="word" style="font-size:1.5rem; color:var(--ink-cream-3); font-weight:600;">Transparencia</div>
+  <div class="label" style="color:var(--gold); margin-bottom:24px;">Hallazgo 12 de 12 · En palabras de los apoderados</div>
+  <div class="split side-even">
+    <div>
+      <div class="label" style="text-align:center; margin-bottom:8px;">¿Qué esperas del nuevo CEPA?</div>
+      <div class="word-cloud" role="img" aria-label="Nube de palabras de las respuestas abiertas: Comunicación 48 menciones, Representación 27, Proactividad 19, Gestión 17, Apoyo 16, Compromiso 14, Comunidad 12, Transparencia 9, Participación 9, Actividades 8, Canalizar 6, Cercanía 6, Resultados 6, Calidad educativa 6, Bullying 5, Colaboración 5, Vinculación 5, Incidencia 4, Motivación 4, Información 3, Liderazgo 3, Organización 3, Unión 2.">
+        <span class="cloud-word" style="font-size:3.6rem; color:var(--gold);" title="Comunicación · 48 menciones">Comunicación</span>
+        <span class="cloud-word" style="font-size:2.1rem;" title="Apoyo · 16 menciones">Apoyo</span>
+        <span class="cloud-word" style="font-size:2.75rem; color:var(--gold);" title="Representación · 27 menciones">Representación</span>
+        <span class="cloud-word" style="font-size:1.85rem;" title="Comunidad · 12 menciones">Comunidad</span>
+        <span class="cloud-word" style="font-size:2.3rem;" title="Proactividad · 19 menciones">Proactividad</span>
+        <span class="cloud-word" style="font-size:1.6rem; color:var(--ink-cream-3);" title="Transparencia · 9 menciones">Transparencia</span>
+        <span class="cloud-word" style="font-size:2.18rem;" title="Gestión · 17 menciones">Gestión</span>
+        <span class="cloud-word" style="font-size:1.32rem; color:var(--ink-cream-3);" title="Cercanía · 6 menciones">Cercanía</span>
+        <span class="cloud-word" style="font-size:1.99rem;" title="Compromiso · 14 menciones">Compromiso</span>
+        <span class="cloud-word" style="font-size:1.32rem; color:var(--ink-cream-3);" title="Resultados · 6 menciones">Resultados</span>
+        <span class="cloud-word" style="font-size:1.6rem; color:var(--ink-cream-3);" title="Participación · 9 menciones">Participación</span>
+        <span class="cloud-word" style="font-size:1.32rem; color:var(--ink-cream-3);" title="Canalizar · 6 menciones">Canalizar</span>
+        <span class="cloud-word" style="font-size:1.32rem; color:var(--ink-cream-3);" title="Calidad educativa · 6 menciones">Calidad educativa</span>
+        <span class="cloud-word" style="font-size:1.5rem; color:var(--ink-cream-3);" title="Actividades · 8 menciones">Actividades</span>
+        <span class="cloud-word" style="font-size:1.2rem; color:var(--ink-cream-3);" title="Colaboración · 5 menciones">Colaboración</span>
+        <span class="cloud-word" style="font-size:1.2rem; color:var(--ink-cream-3);" title="Vinculación · 5 menciones">Vinculación</span>
+        <span class="cloud-word" style="font-size:1.2rem; color:var(--ink-cream-3);" title="Bullying · 5 menciones">Bullying</span>
+        <span class="cloud-word" style="font-size:1.08rem; color:var(--ink-cream-3);" title="Motivación · 4 menciones">Motivación</span>
+        <span class="cloud-word" style="font-size:1.08rem; color:var(--ink-cream-3);" title="Incidencia · 4 menciones">Incidencia</span>
+        <span class="cloud-word" style="font-size:0.93rem; color:var(--ink-cream-3);" title="Liderazgo · 3 menciones">Liderazgo</span>
+        <span class="cloud-word" style="font-size:0.93rem; color:var(--ink-cream-3);" title="Información · 3 menciones">Información</span>
+        <span class="cloud-word" style="font-size:0.93rem; color:var(--ink-cream-3);" title="Organización · 3 menciones">Organización</span>
+        <span class="cloud-word" style="font-size:0.8rem; color:var(--ink-cream-3);" title="Unión · 2 menciones">Unión</span>
+      </div>
     </div>
-    <div class="words-col">
-      <div class="label" style="margin-bottom:8px;">Propuestas concretas</div>
-      <div class="word" style="font-size:2.1rem; font-weight:700;">Talleres</div>
-      <div class="word" style="font-size:1.8rem; color:var(--ink-cream-3); font-weight:600;">Actividades</div>
-      <div class="word" style="font-size:2.3rem; color:var(--gold); line-height:1.1;">Convivencia escolar</div>
-      <div class="word" style="font-size:1.7rem; color:var(--ink-cream-3); font-weight:600;">Calidad académica</div>
-      <div class="word" style="font-size:1.55rem; color:var(--ink-cream-3); font-weight:600;">Bienestar emocional</div>
+    <div>
+      <div class="label" style="margin-bottom:8px;">Ideas y propuestas</div>
+      <div class="quote-carousel" data-quote-carousel>
+        <div class="quote-slot"><blockquote>Convenios y talleres extendidos para la participación de apoderados también.</blockquote></div>
+        <div class="quote-slot"><blockquote>Proponer sanciones drástica frente a casos de bullying.</blockquote></div>
+        <div class="quote-slot"><blockquote>Más instancias para juntar dinero como apoderados para otorgar becas.</blockquote></div>
+      </div>
     </div>
   </div>
 </section>
@@ -946,6 +989,48 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
       }, { threshold: 0.4 });
       gaugeIo.observe(gaugeSvg);
     }
+  });
+
+  // Quote carousel (Hallazgo 12): rotates through open-ended responses, 3 at a time
+  document.querySelectorAll('[data-quote-carousel]').forEach(function (carousel) {
+    var quotes = [
+      'Convenios y talleres extendidos para la participación de apoderados también.',
+      'Proponer sanciones drástica frente a casos de bullying.',
+      'Más instancias para juntar dinero como apoderados para otorgar becas.',
+      'Evaluación de nuevos profesores y mejoras académicas.',
+      'Tener selecciones deportivas y participar en campeonatos.',
+      'Charlas para toda la comunidad de expertos o líderes de opinión.',
+      'Participar en la toma de decisiones del colegio',
+      'Uso de los espacios físicos del colegio después de clases.',
+      'Realización de actividades familiares en el colegio',
+      'Reuniones con el director',
+      'Súpervigilar la instalación de nuevo PEI',
+      'Jornadas de salud mental para alumnos.',
+      'Lograr que el colegio transparente su plan estratégico.',
+      'Cambiar polera blanca por un color más fácil de mantener.',
+      'Que la seguridad de los niños al interior del colegio sea foco.',
+      'Que el colegio tenga mayor participación en temáticas de neurodivergencias.',
+      'Retomar actividades solidarias en terreno.'
+    ];
+    var blockquotes = carousel.querySelectorAll('blockquote');
+    if (!blockquotes.length) return;
+
+    var next = blockquotes.length;
+    setInterval(function () {
+      blockquotes.forEach(function (bq) {
+        var text = quotes[next % quotes.length];
+        next++;
+        if (reduceMotion) {
+          bq.textContent = text;
+          return;
+        }
+        bq.classList.add('is-fading');
+        setTimeout(function () {
+          bq.textContent = text;
+          bq.classList.remove('is-fading');
+        }, 400);
+      });
+    }, 3000);
   });
 })();
 </script>
