@@ -186,6 +186,70 @@ p { font-size: var(--fs-body); color: var(--ink-cream-2); line-height: 1.6; marg
 @keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @media (prefers-reduced-motion: reduce) { .bar-fill { animation: none; } }
 
+/* share bar chart: interactive part-to-whole (Hallazgo 2) */
+.share-chart { position: relative; margin: clamp(28px, 4vw, 48px) 0 clamp(20px, 3vw, 32px); }
+.share-chart-bar {
+  display: flex;
+  width: 100%;
+  height: clamp(84px, 11vw, 116px);
+  background: var(--ink-cream-4);
+  border-radius: 4px;
+  gap: 2px;
+}
+.share-seg {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  transition: flex-grow 1.1s cubic-bezier(.16,.8,.34,1), filter .2s ease, transform .2s ease;
+}
+.share-chart-bar.is-visible .share-seg { flex-grow: var(--pct); }
+.share-seg:hover, .share-seg:focus-visible { filter: brightness(1.14); transform: translateY(-3px); }
+.share-seg:focus-visible { box-shadow: 0 0 0 2px var(--navy-2), 0 0 0 4px var(--ink-cream); }
+@media (prefers-reduced-motion: reduce) {
+  .share-seg { transition: filter .2s ease, transform .2s ease; }
+  .share-chart-bar .share-seg { flex-grow: var(--pct); }
+}
+.share-seg-val { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.05rem, 2.3vw, 1.9rem); color: #fff; line-height: 1; white-space: nowrap; }
+.share-seg-label { font-family: var(--f-mono); font-size: var(--fs-label); letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-top: 6px; white-space: nowrap; }
+.share-seg.label-overflow .share-seg-val,
+.share-seg.label-overflow .share-seg-label { opacity: 0; }
+
+.share-chart-legend { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 20px; }
+.share-legend-item { display: flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-size: var(--fs-label); color: var(--ink-cream-3); }
+.share-legend-item strong { font-family: var(--f-body); color: var(--ink-cream); font-size: 0.95rem; font-weight: 600; letter-spacing: normal; text-transform: none; }
+.share-legend-swatch { width: 12px; height: 12px; border-radius: 2px; flex: none; }
+
+.share-chart-tooltip {
+  position: absolute;
+  top: 0; left: 0;
+  transform: translate(-50%, calc(-100% - 14px));
+  background: var(--cream-2);
+  color: var(--ink-dark);
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-family: var(--f-body);
+  font-size: 0.85rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .15s ease;
+  z-index: 2;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.28);
+}
+.share-chart-tooltip.is-visible { opacity: 1; }
+.share-chart-tooltip strong { display: block; font-family: var(--f-display); font-weight: 800; font-size: 1.05rem; color: var(--ink-dark); }
+.share-chart-tooltip span { color: var(--ink-dark-2); }
+
 /* ciclos cards */
 .ciclos-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
 @media (min-width: 640px)  { .ciclos-grid { grid-template-columns: 1fr 1fr; } }
@@ -242,7 +306,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 <header class="hero on-navy">
   <div class="top">
     <img src="logo-footer.svg" alt="Logo CEPA" style="width:44px;">
-    <div class="label" style="color:var(--gold);">Junio 2026</div>
+    <div class="label" style="color:var(--gold);">Julio 2026</div>
   </div>
   <div>
     <div class="label kicker">Centro de Padres y Apoderados · Colegio Compañía de María Seminario</div>
@@ -306,20 +370,28 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 <section class="block on-navy" style="background:var(--navy-2);">
   <div class="hallazgo-num" aria-hidden="true">02</div>
   <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 2 de 12 · Disposición a participar</div>
-  <h2 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:32px;">¿Participarías en actividades o comisiones del CEPA?</h2>
-  <div class="stat-row cols-3">
-    <div>
-      <div class="stat-num lg">32,3%</div>
-      <div class="label stat-cap">Sí participaría</div>
+  <h2 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:8px;">¿Participarías en actividades o comisiones del CEPA?</h2>
+  <div class="share-chart">
+    <div class="share-chart-bar" role="group" aria-label="Sí participaría 32,3%. Tal vez participaría 44,2%. No participaría 23,5%.">
+      <div class="share-seg" style="--pct:32.3; background:var(--gold-2);" tabindex="0" data-value="32,3%" data-full-label="Sí participaría" aria-label="Sí participaría: 32,3%">
+        <span class="share-seg-val">32,3%</span>
+        <span class="share-seg-label">Sí</span>
+      </div>
+      <div class="share-seg" style="--pct:44.2; background:#3E9B7A;" tabindex="0" data-value="44,2%" data-full-label="Tal vez participaría" aria-label="Tal vez participaría: 44,2%">
+        <span class="share-seg-val">44,2%</span>
+        <span class="share-seg-label">Tal vez</span>
+      </div>
+      <div class="share-seg" style="--pct:23.5; background:#C24A5C;" tabindex="0" data-value="23,5%" data-full-label="No participaría" aria-label="No participaría: 23,5%">
+        <span class="share-seg-val">23,5%</span>
+        <span class="share-seg-label">No</span>
+      </div>
     </div>
-    <div>
-      <div class="stat-num lg" style="color:var(--gold);">44,2%</div>
-      <div class="label stat-cap">Tal vez participaría</div>
+    <div class="share-chart-legend">
+      <div class="share-legend-item"><span class="share-legend-swatch" style="background:var(--gold-2);"></span>Sí participaría <strong>32,3%</strong></div>
+      <div class="share-legend-item"><span class="share-legend-swatch" style="background:#3E9B7A;"></span>Tal vez participaría <strong>44,2%</strong></div>
+      <div class="share-legend-item"><span class="share-legend-swatch" style="background:#C24A5C;"></span>No participaría <strong>23,5%</strong></div>
     </div>
-    <div>
-      <div class="stat-num lg" style="color:var(--ink-cream-3);">23,5%</div>
-      <div class="label stat-cap">No participaría</div>
-    </div>
+    <div class="share-chart-tooltip" id="shareTooltip" role="tooltip"></div>
   </div>
   <div class="callout" style="margin-top:16px;">
     <div class="label">Lectura clave</div>
@@ -678,6 +750,69 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
       onScroll();
     });
     update();
+  }
+
+  // share-chart (Hallazgo 2): scroll-triggered fill + hover/focus tooltip
+  var shareChart = document.querySelector('.share-chart');
+  if (shareChart) {
+    var shareBar = shareChart.querySelector('.share-chart-bar');
+    var segs = shareChart.querySelectorAll('.share-seg');
+    var tooltip = document.getElementById('shareTooltip');
+
+    function checkOverflow() {
+      segs.forEach(function (seg) {
+        seg.classList.toggle('label-overflow', seg.scrollWidth > seg.clientWidth + 1);
+      });
+    }
+
+    function revealBar() {
+      shareBar.classList.add('is-visible');
+      setTimeout(checkOverflow, reduceMotion ? 50 : 1250);
+    }
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      revealBar();
+    } else {
+      var barIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            revealBar();
+            barIo.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      barIo.observe(shareBar);
+    }
+
+    window.addEventListener('resize', function () { checkOverflow(); });
+
+    if (tooltip) {
+      var positionTooltip = function (seg) {
+        var barRect = shareBar.getBoundingClientRect();
+        var segRect = seg.getBoundingClientRect();
+        tooltip.style.left = (segRect.left + segRect.width / 2 - barRect.left) + 'px';
+      };
+      var showTooltip = function (seg) {
+        tooltip.textContent = '';
+        var strong = document.createElement('strong');
+        strong.textContent = seg.getAttribute('data-value');
+        var span = document.createElement('span');
+        span.textContent = seg.getAttribute('data-full-label');
+        tooltip.appendChild(strong);
+        tooltip.appendChild(span);
+        positionTooltip(seg);
+        tooltip.classList.add('is-visible');
+      };
+      var hideTooltip = function () { tooltip.classList.remove('is-visible'); };
+
+      segs.forEach(function (seg) {
+        seg.addEventListener('pointerenter', function () { showTooltip(seg); });
+        seg.addEventListener('pointermove', function () { positionTooltip(seg); });
+        seg.addEventListener('pointerleave', hideTooltip);
+        seg.addEventListener('focus', function () { showTooltip(seg); });
+        seg.addEventListener('blur', hideTooltip);
+      });
+    }
   }
 })();
 </script>
