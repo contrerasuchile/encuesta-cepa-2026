@@ -186,7 +186,7 @@ p { font-size: var(--fs-body); color: var(--ink-cream-2); line-height: 1.6; marg
 @keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @media (prefers-reduced-motion: reduce) { .bar-fill { animation: none; } }
 
-/* pie chart: interactive part-to-whole (Hallazgo 2) */
+/* pie chart: interactive part-to-whole (Hallazgo 3) */
 .share-chart { position: relative; margin: clamp(28px, 4vw, 48px) 0 clamp(20px, 3vw, 32px); display: flex; flex-direction: column; align-items: center; }
 .pie-chart { width: 100%; max-width: 340px; }
 .pie-svg {
@@ -243,7 +243,7 @@ p { font-size: var(--fs-body); color: var(--ink-cream-2); line-height: 1.6; marg
 .share-chart-tooltip strong { display: block; font-family: var(--f-display); font-weight: 800; font-size: 1.05rem; color: var(--ink-dark); }
 .share-chart-tooltip span { color: var(--ink-dark-2); }
 
-/* NPS gauge (Hallazgo 10) */
+/* NPS gauge (Hallazgo 1) */
 .gauge-chart { position: relative; margin: clamp(24px, 4vw, 40px) 0 clamp(16px, 2.5vw, 24px); display: flex; flex-direction: column; align-items: center; max-width: 380px; }
 .gauge-svg {
   display: block;
@@ -338,19 +338,19 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   <div>
     <div class="label kicker">Centro de Padres y Apoderados · Colegio Compañía de María Seminario</div>
     <div class="title">Encuesta CEPA <span class="accent">2026</span></div>
-    <p class="lead sub">Así ven las familias al colegio y al Centro de Padres. Una mirada honesta para seguir mejorando juntos.<p class="lead sub">  <b>¡Muchas gracias por la amplia participación!</b></p>
+    <p class="lead sub">Así ven las familias al colegio y al Centro de Padres. Una mirada concreta para seguir mejorando juntos.<p class="lead sub"style="color:var(--gold);">  <b>¡Muchas gracias por la amplia participación!</b></p>
   </div>
  
 </header>
 
 <!-- CONTEXTO -->
 <section class="block on-cream">
-  <div class="label" style="margin-bottom:16px;">Un momento de escucha comunitaria</div>
+  <div class="label" style="margin-bottom:16px;">Escucha comunitaria</div>
   <div class="rule"></div>
   <!--  
   <div class="label eyebrow">Un momento de escucha comunitaria</div> 
   -->
-  <h1 class="h1" style="font-size:var(--fs-h1); margin-bottom: 8px;">Quisimos saber qué piensan las familias</h1>
+  <h1 class="h1" style="font-size:var(--fs-h1); margin-bottom: 8px;">Lo qué piensan las familias, una mirada clave para fortalecer nuestro trabajo</h1>
   <div class="stat-row cols-3">
     <div>
       <div class="stat-num" style="color:var(--gold-2);">285</div>
@@ -368,16 +368,64 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
       <p style="margin-top:12px;">Más que una consulta puntual: un momento amplio de escucha.</p>
     </div>
   </div>
-  <div class="card" style="max-width:640px;">
-    <h3>📌 ¿Para qué hicimos esta encuesta?</h3>
-    <p>Para conocer qué esperan las familias del colegio y del nuevo Centro de Padres, y usar esa mirada para orientar nuestro trabajo.</p>
+  <div class="card">
+    <h3>¿Qué dicen los resultados?</h3>
+    <p>📌 Muestran <strong>una comunidad comprometida</strong>, con disposición a participar y que valora aspectos clave del corazón del proyecto educativo. </p>
+    <p>📌 Existe una importante <strong>oportunidad de mejora en la dinámica de comunicación con el colegio.</strong></p>
+    <p>📌 Temas de preocupación de los apoderados: <strong>Proyecto educativo y su implementación, convivencia escolar, calidad académica, bienestar socioemocioal de estudiantes</strong>, entre otros. </p>
   </div>
 </section>
 
-<!-- HALLAZGO 1 -->
-<section class="block on-navy">
+<!-- HALLAZGO 1 (NPS) -->
+<section class="block on-navy" style="background:var(--navy-2);">
   <div class="hallazgo-num" aria-hidden="true">01</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 1 de 12 · Ganas de participar</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 1 de 12 · ¿Recomendarían el colegio?</div>
+  <h2 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:32px;">Una lealtad moderada, con espacio para crecer</h2>
+  <!-- <div class="stat-row cols-3">
+    <div>
+      <div class="stat-num lg" style="color:#C24A5C;">32,0%</div>
+      <div class="label stat-cap">Detractores (1–6)</div>
+    </div>
+    <div>
+      <div class="stat-num lg" style="color:#C6852A;">43,0%</div>
+      <div class="label stat-cap">Pasivos (7–8)</div>
+    </div>
+    <div>
+      <div class="stat-num lg" style="color:#3E9B7A;">25,0%</div>
+      <div class="label stat-cap">Promotores (9–10)</div>
+    </div>
+  </div> -->
+  <div class="split side-even" style="margin-top:16px;">
+    <div class="gauge-chart">
+      <svg class="gauge-svg" viewBox="0 0 300 172" role="img" aria-label="Distribución de recomendación: 32,0% detractores, 43,0% pasivos, 25,0% promotores; NPS global −7,0">
+        <path d="M20,145 A130,130 0 0,1 80.35,35.24 L101.78,69.01 A90,90 0 0,0 60,145 Z" fill="#C24A5C"></path>
+        <path d="M80.35,35.24 A130,130 0 0,1 241.92,53.08 L213.64,81.36 A90,90 0 0,0 101.78,69.01 Z" fill="#C6852A"></path>
+        <path d="M241.92,53.08 A130,130 0 0,1 280,145 L240,145 A90,90 0 0,0 213.64,81.36 Z" fill="#3E9B7A"></path>
+        <text x="53.61" y="92.01" text-anchor="middle" class="pie-label-val">32,0%</text>
+        <text x="53.61" y="106.01" text-anchor="middle" class="pie-label-cat">DETRACTORES (1–6)</text>
+        <text x="162.07" y="35.67" text-anchor="middle" class="pie-label-val">43,0%</text>
+        <text x="162.07" y="49.67" text-anchor="middle" class="pie-label-cat">PASIVOS (7–8)</text>
+        <text x="251.63" y="102.90" text-anchor="middle" class="pie-label-val">25,0%</text>
+        <text x="251.63" y="116.90" text-anchor="middle" class="pie-label-cat">PROMOTORES (9–10)</text>
+      </svg>
+      <div class="gauge-score">
+        <div class="label" style="margin-bottom:6px;">NPS Global</div>
+        <div class="stat-num lg" style="color:var(--gold);">−7,0</div>
+        <div class="label" style="margin-top:10px; color:var(--ink-cream-3);">Promedio sobre 10 · 6,92</div>
+      </div>
+    </div>
+    <div class="card">
+            <h3>📌 Lo que nos dice esto</h3>
+      <p>Frente a la pregunta de "¿qué tan dispuesto está a recomendar el Colegio a amigos o familiares?", la respuesta es una recomendación frágil.</p>
+      <p>El grupo pasivo es el más grande: ahí está la oportunidad de mejora.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HALLAZGO 2 -->
+<section class="block on-navy">
+  <div class="hallazgo-num" aria-hidden="true">02</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 2 de 12 · Ganas de participar</div>
   <div class="split aside-right">
     <div>
       <div class="rule"></div>
@@ -395,10 +443,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 2 -->
+<!-- HALLAZGO 3 -->
 <section class="block on-navy" style="background:var(--navy-2);">
-  <div class="hallazgo-num" aria-hidden="true">02</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 2 de 12 · Disposición a participar</div>
+  <div class="hallazgo-num" aria-hidden="true">03</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 3 de 12 · Disposición a participar</div>
   <h2 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:8px;">¿Participarías en actividades o comisiones del CEPA?</h2>
   <div class="share-chart">
     <div class="pie-chart">
@@ -428,10 +476,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 3 (bars) -->
+<!-- HALLAZGO 4 (bars) -->
 <section class="block on-navy" style="background:var(--navy-2);">
-  <div class="hallazgo-num" aria-hidden="true">03</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 3 de 12 · Qué frena la participación</div>
+  <div class="hallazgo-num" aria-hidden="true">04</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 4 de 12 · Qué frena la participación</div>
   <div class="split aside-right">
     <div>
       <div class="label" style="margin-bottom:14px;">Principales barreras declaradas</div>
@@ -469,10 +517,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 4 -->
+<!-- HALLAZGO 5 -->
 <section class="block on-navy">
-  <div class="hallazgo-num" aria-hidden="true">04</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 4 de 12 · La comunicación importa</div>
+  <div class="hallazgo-num" aria-hidden="true">05</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 5 de 12 · La comunicación importa</div>
   <div class="rule"></div>
   <h2 style="font-size:var(--fs-h1); margin-bottom:28px;">Comunicar es más que informar</h2>
   <p class="lead" style="max-width:820px; margin-bottom:28px;">La comunicación aparece una y otra vez en las respuestas, abiertas y cerradas. Para las familias, comunicar bien significa generar claridad, confianza y cercanía.</p>
@@ -508,10 +556,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 5 (bars) -->
+<!-- HALLAZGO 6 (bars) -->
 <section class="block on-navy" style="background:var(--navy-2);">
-  <div class="hallazgo-num" aria-hidden="true">05</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 5 de 12 · Qué esperan del CEPA las familias</div>
+  <div class="hallazgo-num" aria-hidden="true">06</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 6 de 12 · Qué esperan del CEPA las familias</div>
   <div class="split aside-right">
     <div>
       <div class="label" style="margin-bottom:14px;">Enfoque esperado del CEPA</div>
@@ -548,10 +596,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 6 (bars) -->
+<!-- HALLAZGO 7 (bars) -->
 <section class="block on-navy">
-  <div class="hallazgo-num" aria-hidden="true">06</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 6 de 12 · Lo que preocupa a las familias</div>
+  <div class="hallazgo-num" aria-hidden="true">07</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 7 de 12 · Lo que preocupa a las familias</div>
   <div class="split aside-right">
     <div>
       <div class="label" style="margin-bottom:14px;">Temas que más preocupan a las familias hoy</div>
@@ -609,10 +657,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 7 (bars) -->
+<!-- HALLAZGO 8 (bars) -->
 <section class="block on-navy" style="background:var(--navy-2);">
-  <div class="hallazgo-num" aria-hidden="true">07</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 7 de 12 · El rol que le dan al CEPA</div>
+  <div class="hallazgo-num" aria-hidden="true">08</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 8 de 12 · El rol que le dan al CEPA</div>
   <div class="split aside-right">
     <div>
       <div class="label" style="margin-bottom:14px;">Funciones que esperan del CEPA (% que la mencionó)</div>
@@ -654,10 +702,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 8 (bars) -->
+<!-- HALLAZGO 9 (bars) -->
 <section class="block on-navy">
-  <div class="hallazgo-num" aria-hidden="true">08</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 8 de 12 · Acciones más urgentes</div>
+  <div class="hallazgo-num" aria-hidden="true">09</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 9 de 12 · Acciones más urgentes</div>
   <div class="split aside-right">
     <div>
       <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">Acciones prioritarias esperadas del CEPA</h3>
@@ -690,10 +738,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 9 -->
+<!-- HALLAZGO 10 -->
 <section class="block on-navy">
-  <div class="hallazgo-num" aria-hidden="true">09</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 9 de 12 · Cómo evalúan al colegio</div>
+  <div class="hallazgo-num" aria-hidden="true">10</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 10 de 12 · Cómo evalúan al colegio</div>
   <div class="stat-row cols-2">
     <div>
       <div class="label" style="margin-bottom:14px;">Calidad del servicio educativo</div>
@@ -713,52 +761,6 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
             <div class="label">📌 Lectura clave</div>
         <p style="color:var(--ink-cream);">La calidad educativa se evalúa mejor que la gestión de consultas y reclamos: ahí hay una oportunidad clara de mejora para el Colegio y como CEPA un llamado a asumir nuestro rol mediador.</p></div>
 
-</section>
-
-<!-- HALLAZGO 10 (NPS) -->
-<section class="block on-navy" style="background:var(--navy-2);">
-  <div class="hallazgo-num" aria-hidden="true">10</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 10 de 12 · ¿Recomendarían el colegio?</div>
-  <h2 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:32px;">Una lealtad moderada, con espacio para crecer</h2>
-  <!-- <div class="stat-row cols-3">
-    <div>
-      <div class="stat-num lg" style="color:#C24A5C;">32,0%</div>
-      <div class="label stat-cap">Detractores (1–6)</div>
-    </div>
-    <div>
-      <div class="stat-num lg" style="color:#C6852A;">43,0%</div>
-      <div class="label stat-cap">Pasivos (7–8)</div>
-    </div>
-    <div>
-      <div class="stat-num lg" style="color:#3E9B7A;">25,0%</div>
-      <div class="label stat-cap">Promotores (9–10)</div>
-    </div>
-  </div> -->
-  <div class="split side-even" style="margin-top:16px;">
-    <div class="gauge-chart">
-      <svg class="gauge-svg" viewBox="0 0 300 172" role="img" aria-label="Distribución de recomendación: 32,0% detractores, 43,0% pasivos, 25,0% promotores; NPS global −7,0">
-        <path d="M20,145 A130,130 0 0,1 80.35,35.24 L101.78,69.01 A90,90 0 0,0 60,145 Z" fill="#C24A5C"></path>
-        <path d="M80.35,35.24 A130,130 0 0,1 241.92,53.08 L213.64,81.36 A90,90 0 0,0 101.78,69.01 Z" fill="#C6852A"></path>
-        <path d="M241.92,53.08 A130,130 0 0,1 280,145 L240,145 A90,90 0 0,0 213.64,81.36 Z" fill="#3E9B7A"></path>
-        <text x="53.61" y="92.01" text-anchor="middle" class="pie-label-val">32,0%</text>
-        <text x="53.61" y="106.01" text-anchor="middle" class="pie-label-cat">DETRACTORES (1–6)</text>
-        <text x="162.07" y="35.67" text-anchor="middle" class="pie-label-val">43,0%</text>
-        <text x="162.07" y="49.67" text-anchor="middle" class="pie-label-cat">PASIVOS (7–8)</text>
-        <text x="251.63" y="102.90" text-anchor="middle" class="pie-label-val">25,0%</text>
-        <text x="251.63" y="116.90" text-anchor="middle" class="pie-label-cat">PROMOTORES (9–10)</text>
-      </svg>
-      <div class="gauge-score">
-        <div class="label" style="margin-bottom:6px;">NPS Global</div>
-        <div class="stat-num lg" style="color:var(--gold);">−7,0</div>
-        <div class="label" style="margin-top:10px; color:var(--ink-cream-3);">Promedio sobre 10 · 6,92</div>
-      </div>
-    </div>
-    <div class="card">
-            <h3>📌 Lo que nos dice esto</h3>
-      <p>Frente a la pregunta de "¿qué tan dispuesto está a recomendar el Colegio a amigos o familiares?", la respuesta es una recomendación frágil.</p>
-      <p>El grupo pasivo es el más grande: ahí está la oportunidad de mejora.</p>
-    </div>
-  </div>
 </section>
 
 <!-- HALLAZGO 11 (ciclos) -->
@@ -916,7 +918,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
     update();
   }
 
-  // pie charts (Hallazgo 2, Hallazgo 3, …): scroll-triggered reveal + hover/focus tooltip
+  // pie charts (Hallazgo 3, Hallazgo 5, …): scroll-triggered reveal + hover/focus tooltip
   document.querySelectorAll('.share-chart').forEach(function (shareChart) {
     var pieSvg = shareChart.querySelector('.pie-svg');
     var slices = shareChart.querySelectorAll('.pie-slice');
@@ -971,7 +973,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
     }
   });
 
-  // NPS gauge (Hallazgo 10): scroll-triggered reveal, needle sweeps in from −100
+  // NPS gauge (Hallazgo 1): scroll-triggered reveal, needle sweeps in from −100
   document.querySelectorAll('.gauge-chart').forEach(function (gaugeChart) {
     var gaugeSvg = gaugeChart.querySelector('.gauge-svg');
     if (!gaugeSvg) return;
