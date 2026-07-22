@@ -268,11 +268,11 @@ p { font-size: var(--fs-body); color: var(--ink-cream-2); line-height: 1.6; marg
 .ciclo-card h3 { font-size: 1.3rem; font-weight: 700; }
 .ciclo-card p { font-size: 0.95rem; }
 
-/* word cloud (Hallazgo 12): size encodes mention frequency */
+/* word cloud (Hallazgo 10): size encodes mention frequency */
 .word-cloud { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 6px 22px; max-width: 980px; margin: clamp(24px, 4vw, 40px) auto 0; text-align: center; }
 .cloud-word { font-family: var(--f-display); font-weight: 800; letter-spacing: -0.01em; line-height: 1; cursor: default; }
 
-/* rotating quote carousel (Hallazgo 12): cycles through open-ended responses */
+/* rotating quote carousel (Hallazgo 10): cycles through open-ended responses */
 .quote-carousel { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 980px; margin: 0 auto; }
 @media (min-width: 780px) { .quote-carousel { grid-template-columns: 1fr 1fr 1fr; align-items: start; } }
 .split .quote-carousel { grid-template-columns: 1fr; margin: 0; max-width: none; }
@@ -424,7 +424,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 <!-- HALLAZGO 1 -->
 <section class="block on-navy">
   <div class="hallazgo-num" aria-hidden="true">01</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 1 de 11 · Ganas de participar</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 1 de 10 · Ganas de participar</div>
   <div class="split aside-right">
     <div>
       <div class="rule"></div>
@@ -445,7 +445,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 <!-- HALLAZGO 2 -->
 <section class="block on-navy" style="background:var(--navy-2);">
   <div class="hallazgo-num" aria-hidden="true">02</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 2 de 11 · Disposición a participar</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 2 de 10 · Disposición a participar</div>
   <h2 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:8px;">¿Participarías en actividades o comisiones del CEPA?</h2>
   <div class="share-chart">
     <div class="pie-chart">
@@ -478,7 +478,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 <!-- HALLAZGO 3 (bars) -->
 <section class="block on-navy" style="background:var(--navy-2);">
   <div class="hallazgo-num" aria-hidden="true">03</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 3 de 11 · Qué frena la participación</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 3 de 10 · Qué frena la participación</div>
   <div class="split aside-right">
     <div>
       <div class="label" style="margin-bottom:14px;">Principales barreras declaradas</div>
@@ -516,7 +516,8 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 4 -->
+<!-- HALLAZGO 4 (deshabilitado) -->
+<!--
 <section class="block on-navy">
   <div class="hallazgo-num" aria-hidden="true">04</div>
   <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 4 de 11 · La comunicación importa</div>
@@ -554,11 +555,12 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
     <p style="font-size:var(--fs-body);">Comunicar bien es construir confianza, ordenar expectativas y hacer visible el trabajo del CEPA.</p>
   </div>
 </section>
+-->
 
-<!-- HALLAZGO 5 (bars) -->
+<!-- HALLAZGO 4 (bars) -->
 <section class="block on-navy" style="background:var(--navy-2);">
-  <div class="hallazgo-num" aria-hidden="true">05</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 5 de 11 · Qué esperan del CEPA las familias</div>
+  <div class="hallazgo-num" aria-hidden="true">04</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 4 de 10 · Qué esperan del CEPA las familias</div>
   <div class="split aside-right">
     <div>
       <div class="label" style="margin-bottom:14px;">Enfoque esperado del CEPA</div>
@@ -595,10 +597,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 6 (bars) -->
+<!-- HALLAZGO 5 (bars) -->
 <section class="block on-navy">
-  <div class="hallazgo-num" aria-hidden="true">06</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 6 de 11 · Lo que preocupa a las familias</div>
+  <div class="hallazgo-num" aria-hidden="true">05</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 5 de 10 · Lo que preocupa a las familias</div>
   <div class="split aside-right">
     <div>
       <div class="label" style="margin-bottom:14px;">Temas que más preocupan a las familias hoy</div>
@@ -656,10 +658,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 7 (bars) -->
+<!-- HALLAZGO 6 (bars) -->
 <section class="block on-navy" style="background:var(--navy-2);">
-  <div class="hallazgo-num" aria-hidden="true">07</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 7 de 11 · El rol que le dan al CEPA</div>
+  <div class="hallazgo-num" aria-hidden="true">06</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 6 de 10 · El rol que le dan al CEPA</div>
   <div class="split aside-right">
     <div>
       <div class="label" style="margin-bottom:14px;">Funciones que esperan del CEPA (% que la mencionó)</div>
@@ -701,10 +703,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 8 (bars) -->
+<!-- HALLAZGO 7 (bars) -->
 <section class="block on-navy">
-  <div class="hallazgo-num" aria-hidden="true">08</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 8 de 11 · Acciones más urgentes</div>
+  <div class="hallazgo-num" aria-hidden="true">07</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 7 de 10 · Acciones más urgentes</div>
   <div class="split aside-right">
     <div>
       <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">Acciones prioritarias esperadas del CEPA</h3>
@@ -737,10 +739,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 9 -->
+<!-- HALLAZGO 8 -->
 <section class="block on-navy">
-  <div class="hallazgo-num" aria-hidden="true">09</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 9 de 11 · Cómo evalúan al colegio</div>
+  <div class="hallazgo-num" aria-hidden="true">08</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 8 de 10 · Cómo evalúan al colegio</div>
   <div class="stat-row cols-2">
     <div>
       <div class="label" style="margin-bottom:14px;">Calidad del servicio educativo</div>
@@ -762,10 +764,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 
 </section>
 
-<!-- HALLAZGO 10 (ciclos) -->
+<!-- HALLAZGO 9 (ciclos) -->
 <section class="block on-cream">
-  <div class="hallazgo-num" aria-hidden="true">10</div>
-  <div class="label" style="color:var(--gold-2); margin-bottom:16px;">Hallazgo 10 de 11 · Cada ciclo, su propia mirada</div>
+  <div class="hallazgo-num" aria-hidden="true">09</div>
+  <div class="label" style="color:var(--gold-2); margin-bottom:16px;">Hallazgo 9 de 10 · Cada ciclo, su propia mirada</div>
   <h2 style="font-size:var(--fs-h1); margin-bottom:32px; color:var(--ink-dark);">Una misma encuesta, distintas experiencias</h2>
   <div class="ciclos-grid">
     <div class="ciclo-card">
@@ -791,10 +793,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 11 (palabras) -->
+<!-- HALLAZGO 10 (palabras) -->
 <section class="block on-navy">
-  <div class="hallazgo-num" aria-hidden="true">11</div>
-  <div class="label" style="color:var(--gold); margin-bottom:24px;">Hallazgo 11 de 11 · En palabras de los apoderados</div>
+  <div class="hallazgo-num" aria-hidden="true">10</div>
+  <div class="label" style="color:var(--gold); margin-bottom:24px;">Hallazgo 10 de 10 · En palabras de los apoderados</div>
         <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">En palabras de los apoderados</h3>
 
   <div class="split side-even">
@@ -917,7 +919,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
     update();
   }
 
-  // pie charts (Hallazgo 2, Hallazgo 4, …): scroll-triggered reveal + hover/focus tooltip
+  // pie charts (Hallazgo 2): scroll-triggered reveal + hover/focus tooltip
   document.querySelectorAll('.share-chart').forEach(function (shareChart) {
     var pieSvg = shareChart.querySelector('.pie-svg');
     var slices = shareChart.querySelectorAll('.pie-slice');
@@ -994,7 +996,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
     }
   });
 
-  // Quote carousel (Hallazgo 12): rotates through open-ended responses, 3 at a time
+  // Quote carousel (Hallazgo 10): rotates through open-ended responses, 3 at a time
   document.querySelectorAll('[data-quote-carousel]').forEach(function (carousel) {
     var quotes = [
       'Convenios y talleres extendidos para la participación de apoderados también.',
