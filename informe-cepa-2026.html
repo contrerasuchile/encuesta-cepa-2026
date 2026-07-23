@@ -174,6 +174,7 @@ p { font-size: var(--fs-body); color: var(--ink-cream-2); line-height: 1.6; marg
 @media (min-width: 860px) {
   .split.side-narrow { grid-template-columns: 1.2fr 1fr; align-items: center; }
   .split.side-even   { grid-template-columns: 1fr 1fr; align-items: center; }
+  .split.aside-right { grid-template-columns: 1.3fr 1fr; }
   .split.aside-right > :first-child { padding-right: clamp(32px,4vw,64px); border-right: 1px solid var(--ink-cream-4); }
   .on-cream .split.aside-right > :first-child { border-right-color: var(--ink-dark-3); }
 }
@@ -186,7 +187,7 @@ p { font-size: var(--fs-body); color: var(--ink-cream-2); line-height: 1.6; marg
 @keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @media (prefers-reduced-motion: reduce) { .bar-fill { animation: none; } }
 
-/* pie chart: interactive part-to-whole (Hallazgo 2) */
+/* pie chart: interactive part-to-whole (Hallazgo 2, Hallazgo 6) */
 .share-chart { position: relative; margin: clamp(28px, 4vw, 48px) 0 clamp(20px, 3vw, 32px); display: flex; flex-direction: column; align-items: center; }
 .pie-chart { width: 100%; max-width: 340px; }
 .pie-svg {
@@ -268,7 +269,7 @@ p { font-size: var(--fs-body); color: var(--ink-cream-2); line-height: 1.6; marg
 .ciclo-card h3 { font-size: 1.3rem; font-weight: 700; }
 .ciclo-card p { font-size: 0.95rem; }
 
-/* word cloud (Hallazgo 10): size encodes mention frequency */
+/* word cloud (Hallazgo 8): size encodes mention frequency */
 .word-cloud { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 6px 22px; max-width: 980px; margin: clamp(24px, 4vw, 40px) auto 0; text-align: center; }
 .cloud-word { font-family: var(--f-display); font-weight: 800; letter-spacing: -0.01em; line-height: 1; cursor: default; }
 
@@ -370,15 +371,15 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
   <div class="card">
     <h3>¿Qué dicen los resultados?</h3>
-    <p>📌 Muestran <strong>una comunidad comprometida</strong>, con disposición a participar y que valora aspectos clave del corazón del proyecto educativo. </p>
+    <p>📌 Muestran <strong>una comunidad con disposición a participar</strong>. </p>
     <p>📌 Existe una importante <strong>oportunidad de mejora en la dinámica de comunicación con el colegio.</strong></p>
-    <p>📌 Temas de preocupación de los apoderados: <strong>Proyecto educativo y su implementación, convivencia escolar, calidad académica, bienestar socioemocional de estudiantes</strong>, entre otros. </p>
+    <p>📌 Lo que preocupa a los apoderados: <strong>Proyecto educativo y su implementación, convivencia escolar, calidad académica, bienestar socioemocional de estudiantes</strong>, entre otros. </p>
   </div>
 </section>
 
 <!-- ALERTA (NPS) -->
 <section class="block on-navy" style="background:var(--navy-2);">
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Alerta · ¿Recomendarían el colegio?</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Una alerta</div>
   <h2 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:32px;">🚦Alerta: un desgaste incipiente en la disposición a recomendar al colegio</h2>
   <!-- <div class="stat-row cols-3">
     <div>
@@ -436,7 +437,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
     <div style="display:flex; flex-direction:column; gap:28px;">
       <div class="card">
         <h3>📌 Lo que nos dice esto</h3>
-        <p>La comunidad no está indiferente. Quiere participar, pero necesita canales claros para hacerlo.</p>
+        <p>Más allá de la evaluación, <b>la comunidad no está indiferente. Quiere participar</b>, pero necesita canales claros para hacerlo.</p>
       </div>
       <!-- <p class="lead">La comunidad no está indiferente. Quiere participar, y necesita canales claros para hacerlo.</p> -->
     </div>
@@ -444,10 +445,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 </section>
 
 <!-- HALLAZGO 2 -->
-<section class="block on-navy" style="background:var(--navy-2);">
+<section class="block on-cream">
   <div class="hallazgo-num" aria-hidden="true">02</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 2 de 10 · Disposición a participar</div>
-  <h2 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:8px;">¿Participarías en actividades o comisiones del CEPA?</h2>
+  <div class="label" style="color:var(--gold-2); margin-bottom:16px;">Hallazgo 2 de 10 · Disposición a participar</div>
+  <h2 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:8px; color:var(--ink-dark);">¿Participarías en actividades o comisiones del CEPA?</h2>
   <div class="share-chart">
     <div class="pie-chart">
       <svg class="pie-svg" viewBox="0 0 240 240" role="group" aria-label="Sí participaría 32,3%. Tal vez participaría 44,2%. No participaría 23,5%.">
@@ -480,7 +481,10 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 <section class="block on-navy" style="background:var(--navy-2);">
   <div class="hallazgo-num" aria-hidden="true">03</div>
   <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 3 de 10 · Qué frena la participación</div>
-  <div class="split aside-right">
+  <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">La baja participación no es solo falta de interés</h3>
+  <p class="lead" style="margin-bottom:24px;">Si bien responde a barreras prácticas, también existen dudas sobre si la opinión de las familias realmente incide en las decisiones y lineamientos establecidos por el colegio.
+</p>
+  <div class="split aside-right" style="margin-top:16px;">
     <div>
       <div class="label" style="margin-bottom:14px;">Principales barreras declaradas</div>
       <div class="bars">
@@ -506,22 +510,72 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
         </div>
       </div>
     </div>
-    <div>
-      <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">La baja participación no es solo falta de interés</h3>
-      <p class="lead" style="margin-bottom:24px;">Responde a barreras prácticas y a dudas sobre si la opinión de las familias realmente incide.</p>
-      <div class="card">
-        <h3 style="font-size:1.3rem;">¿Qué podemos hacer?</h3>
-        <p>Flexibilizar formatos, comunicar mejor y mostrar con hechos que la opinión de las familias sí genera cambios.</p>
-      </div>
+    <div class="card">
+      <h3 style="font-size:1.3rem;">¿Qué podemos hacer?</h3>
+      <p>Flexibilizar formatos, escuchar y recopilar las opiniones de la comunidad, comunicando mejor y <b>mostrando con hechos que la opinión de las familias sí genera cambios relevantes</b>.</p>
     </div>
   </div>
 </section>
 
-<!-- HALLAZGO 4 (deshabilitado) -->
-<!--
+<!-- HALLAZGO 4 -->
 <section class="block on-navy">
   <div class="hallazgo-num" aria-hidden="true">04</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 4 de 11 · La comunicación importa</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 4 de 10 · Cómo evalúan al colegio</div>
+  <div class="stat-row cols-2">
+    <div>
+      <div class="label" style="margin-bottom:14px;">Calidad del servicio educativo</div>
+      <div class="stat-num xl">69,4%</div>
+      <p class="lead" style="margin-top:20px;">Evaluación positiva de la calidad educativa general</p>
+    </div>
+    <div>
+      <div class="label" style="margin-bottom:14px;">Gestión de consultas y reclamos</div>
+      <div class="stat-num xl" style="color:var(--gold);">54,6%</div>
+      <p class="lead" style="margin-top:20px;">Evaluación positiva de la gestión de respuestas</p>
+    </div>
+  </div>
+  <div class="divider" style="margin:20px 0;"></div>
+  
+
+          <div class="callout">
+            <div class="label">📌 Lectura clave</div>
+        <p style="color:var(--ink-cream);">La calidad educativa se evalúa mejor que la gestión de consultas y reclamos: y es ahí en la comunicación donde hay una oportunidad clara de mejora para el Colegio, y como CEPA un llamado a asumir nuestro rol mediador.</p></div>
+
+</section>
+
+<!-- HALLAZGO 5 (ciclos) -->
+<section class="block on-cream">
+  <div class="hallazgo-num" aria-hidden="true">05</div>
+  <div class="label" style="color:var(--gold-2); margin-bottom:16px;">Hallazgo 5 de 10 · Cada ciclo, su propia mirada</div>
+  <h2 style="font-size:var(--fs-h1); margin-bottom:32px; color:var(--ink-dark);">Una misma encuesta, distintas experiencias</h2>
+  <div class="ciclos-grid">
+    <div class="ciclo-card">
+      <div class="label">Prebásica</div>
+      <h3>La más optimista</h3>
+      <p>Mejor evaluación del colegio y de la calidad educativa. Preocupa el bienestar emocional de los niños.</p>
+    </div>
+    <div class="ciclo-card muted">
+      <div class="label">Primer Ciclo</div>
+      <h3>La más exigente en comunicación</h3>
+      <p>Pide más comunicación familia-colegio y mira con más exigencia la gestión institucional.</p>
+    </div>
+    <div class="ciclo-card muted">
+      <div class="label">Segundo Ciclo</div>
+      <h3>La más crítica</h3>
+      <p>Mayor participación en la encuesta y NPS más bajo. Pide representación real e incidencia.</p>
+    </div>
+    <div class="ciclo-card muted">
+      <div class="label">Enseñanza Media</div>
+      <h3>La que pide ser incluida</h3>
+      <p>Menor cobertura relativa, pero alta valoración de la participación familiar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HALLAZGO 6 (deshabilitado) -->
+<!--
+<section class="block on-navy">
+  <div class="hallazgo-num" aria-hidden="true">06</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 6 de 10 · La comunicación importa</div>
   <div class="rule"></div>
   <h2 style="font-size:var(--fs-h1); margin-bottom:28px;">Comunicar es más que informar</h2>
   <p class="lead" style="max-width:820px; margin-bottom:28px;">La comunicación aparece una y otra vez en las respuestas, abiertas y cerradas. Para las familias, comunicar bien significa generar claridad, confianza y cercanía.</p>
@@ -558,13 +612,15 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
 </section>
 -->
 
-<!-- HALLAZGO 4 (bars) -->
+<!-- HALLAZGO 6 (bars) -->
 <section class="block on-navy" style="background:var(--navy-2);">
-  <div class="hallazgo-num" aria-hidden="true">04</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 4 de 10 · Qué esperan del CEPA las familias</div>
-  <div class="split aside-right">
+  <div class="hallazgo-num" aria-hidden="true">06</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 6 de 10 · Qué esperan del CEPA las familias</div>
+  <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:24px;">Foco más allá de los eventos</h3>
+  <p class="lead" style="margin-bottom:24px;">Las familias no piensan al CEPA solo como organizador de eventos. Lo ven como una instancia que representa, articula y canaliza los temas importantes.</p>
+  <div class="split aside-right" style="margin-top:16px;">
     <div>
-      <div class="label" style="margin-bottom:14px;">Enfoque esperado del CEPA</div>
+      <div class="label" style="margin-bottom:14px;">En tu opinión, el Centro de Padres debiera enfocarse principalmente en:</div>
       <div class="bars">
         <div class="bar-row">
           <div class="bar-label"><span>Representar inquietudes de apoderados</span><span style="color:var(--gold);">68,4%</span></div>
@@ -588,21 +644,20 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
         </div>
       </div>
     </div>
-    <div>
-      <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:24px;">Un CEPA que represente, no solo que organice</h3>
-      <p class="lead" style="margin-bottom:24px;">Las familias no imaginan al CEPA solo como organizador de eventos. Lo ven como una instancia que representa, articula y canaliza los temas importantes.</p>
-      <div class="callout">
-            <div class="label">📌 Lectura clave</div>
-        <p style="color:var(--ink-cream);">Las familias esperan un CEPA que escuche, represente y gestione.</p></div>
+    <div class="callout">
+      <div class="label">📌 Lectura clave</div>
+      <p style="color:var(--ink-cream);">Las familias esperan un CEPA que escuche, represente y gestione.</p>
     </div>
   </div>
 </section>
 
-<!-- HALLAZGO 5 (bars) -->
+<!-- HALLAZGO 7 (bars) -->
 <section class="block on-navy">
-  <div class="hallazgo-num" aria-hidden="true">05</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 5 de 10 · Lo que preocupa a las familias</div>
-  <div class="split aside-right">
+  <div class="hallazgo-num" aria-hidden="true">07</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 7 de 10 · Lo que preocupa a las familias</div>
+  <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">La experiencia escolar en todas su dimensiones</h3>
+  <p class="lead" style="margin-bottom:24px;">Las familias miran al colegio en conjunto: aprendizaje, bienestar, convivencia, buen trato y claridad institucional — todo importa a la vez.</p>
+  <div class="split aside-right" style="margin-top:16px;">
     <div>
       <div class="label" style="margin-bottom:14px;">Temas que más preocupan a las familias hoy</div>
       <div class="bars">
@@ -648,24 +703,22 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
         </div>
       </div>
     </div>
-    <div>
-      <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">La experiencia escolar, de forma completa</h3>
-      <p class="lead" style="margin-bottom:24px;">Las familias miran al colegio en conjunto: aprendizaje, bienestar, convivencia, buen trato y claridad institucional — todo importa a la vez.</p>
-      <div class="card">
-        <h3>📌 Lo que nos dice esto</h3>
-        <p style="font-size:var(--fs-body);">Sus preocupaciones no son aisladas: hablan de la experiencia escolar completa.</p>
-      </div>
+    <div class="card">
+      <h3>📌 Lo que nos dice esto</h3>
+      <p style="font-size:var(--fs-body);">Sus preocupaciones no son aisladas: hablan de la experiencia escolar completa.</p>
     </div>
   </div>
 </section>
 
-<!-- HALLAZGO 6 (bars) -->
+<!-- HALLAZGO 8 (bars) -->
 <section class="block on-navy" style="background:var(--navy-2);">
-  <div class="hallazgo-num" aria-hidden="true">06</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 6 de 10 · El rol que le dan al CEPA</div>
-  <div class="split aside-right">
+  <div class="hallazgo-num" aria-hidden="true">08</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 8 de 10 · El rol que le dan al CEPA</div>
+  <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">Un puente, no un reemplazo</h3>
+  <p class="lead" style="margin-bottom:24px;">En este contexto de múltiples preocupaciones, las familias creen que el CEPA debe ser su representante, articulador y voz organizada frente a la institución.</p>
+  <div class="split aside-right" style="margin-top:16px;">
     <div>
-      <div class="label" style="margin-bottom:14px;">Funciones que esperan del CEPA (% que la mencionó)</div>
+      <div class="label" style="margin-bottom:14px;"> ¿En qué temas cree que el Centro de Padres sí puede tener una incidencia real? (% que la mencionó)</div>
       <div class="bars">
         <div class="bar-row">
           <div class="bar-label"><span>Mejorar la comunicación del colegio con las familias</span><span style="color:var(--gold);">78,6%</span></div>
@@ -694,20 +747,47 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
       </div>
     </div>
     <div>
-      <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">Un puente, no un reemplazo</h3>
-      <p class="lead" style="margin-bottom:24px;">Las familias no esperan que el CEPA reemplace al colegio. Esperan que sea puente, articulador y voz organizada frente a la institución.</p>
-      <div class="callout">
-        <div class="label">Lectura clave</div>
-        <p style="color:var(--ink-cream);">El CEPA puede ayudar a ordenar la conversación entre familias y colegio.</p>
+      <div class="label" style="text-align:center; margin-bottom:8px;">En una palabra o frase breve, ¿qué esperas del nuevo CEPA?</div>
+      <div class="word-cloud" role="img" aria-label="Nube de palabras de las respuestas abiertas: Comunicación 48 menciones, Representación 27, Proactividad 19, Gestión 17, Apoyo 16, Compromiso 14, Comunidad 12, Transparencia 9, Participación 9, Actividades 8, Canalizar 6, Cercanía 6, Resultados 6, Calidad educativa 6, Bullying 5, Colaboración 5, Vinculación 5, Incidencia 4, Motivación 4, Información 3, Liderazgo 3, Organización 3, Unión 2.">
+        <span class="cloud-word" style="font-size:3.6rem; color:var(--gold);" title="Comunicación · 48 menciones">Comunicación</span>
+        <span class="cloud-word" style="font-size:2.1rem;" title="Apoyo · 16 menciones">Apoyo</span>
+        <span class="cloud-word" style="font-size:2.75rem; color:var(--gold);" title="Representación · 27 menciones">Representación</span>
+        <span class="cloud-word" style="font-size:1.85rem;" title="Comunidad · 12 menciones">Comunidad</span>
+        <span class="cloud-word" style="font-size:2.3rem;" title="Proactividad · 19 menciones">Proactividad</span>
+        <span class="cloud-word" style="font-size:1.6rem; color:var(--ink-cream-3);" title="Transparencia · 9 menciones">Transparencia</span>
+        <span class="cloud-word" style="font-size:2.18rem;" title="Gestión · 17 menciones">Gestión</span>
+        <span class="cloud-word" style="font-size:1.32rem; color:var(--ink-cream-3);" title="Cercanía · 6 menciones">Cercanía</span>
+        <span class="cloud-word" style="font-size:1.99rem;" title="Compromiso · 14 menciones">Compromiso</span>
+        <span class="cloud-word" style="font-size:1.32rem; color:var(--ink-cream-3);" title="Resultados · 6 menciones">Resultados</span>
+        <span class="cloud-word" style="font-size:1.6rem; color:var(--ink-cream-3);" title="Participación · 9 menciones">Participación</span>
+        <span class="cloud-word" style="font-size:1.32rem; color:var(--ink-cream-3);" title="Canalizar · 6 menciones">Canalizar</span>
+        <span class="cloud-word" style="font-size:1.32rem; color:var(--ink-cream-3);" title="Calidad educativa · 6 menciones">Calidad educativa</span>
+        <span class="cloud-word" style="font-size:1.5rem; color:var(--ink-cream-3);" title="Actividades · 8 menciones">Actividades</span>
+        <span class="cloud-word" style="font-size:1.2rem; color:var(--ink-cream-3);" title="Colaboración · 5 menciones">Colaboración</span>
+        <span class="cloud-word" style="font-size:1.2rem; color:var(--ink-cream-3);" title="Vinculación · 5 menciones">Vinculación</span>
+        <span class="cloud-word" style="font-size:1.2rem; color:var(--ink-cream-3);" title="Bullying · 5 menciones">Bullying</span>
+        <span class="cloud-word" style="font-size:1.08rem; color:var(--ink-cream-3);" title="Motivación · 4 menciones">Motivación</span>
+        <span class="cloud-word" style="font-size:1.08rem; color:var(--ink-cream-3);" title="Incidencia · 4 menciones">Incidencia</span>
+        <span class="cloud-word" style="font-size:0.93rem; color:var(--ink-cream-3);" title="Liderazgo · 3 menciones">Liderazgo</span>
+        <span class="cloud-word" style="font-size:0.93rem; color:var(--ink-cream-3);" title="Información · 3 menciones">Información</span>
+        <span class="cloud-word" style="font-size:0.93rem; color:var(--ink-cream-3);" title="Organización · 3 menciones">Organización</span>
+        <span class="cloud-word" style="font-size:0.8rem; color:var(--ink-cream-3);" title="Unión · 2 menciones">Unión</span>
       </div>
     </div>
   </div>
+
+  <div class="divider" style="margin:32px 0;"></div>
+
+  <div class="callout">
+    <div class="label">Lectura clave</div>
+    <p style="color:var(--ink-cream);">Dada las múltiples aristas de la educación, el CEPA puede ayudar a ordenar la conversación entre familias y colegio para lograr resultados exitosos.</p>
+  </div>
 </section>
 
-<!-- HALLAZGO 7 (bars) -->
+<!-- HALLAZGO 9 (bars) -->
 <section class="block on-navy">
-  <div class="hallazgo-num" aria-hidden="true">07</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 7 de 10 · Acciones más urgentes</div>
+  <div class="hallazgo-num" aria-hidden="true">09</div>
+  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 9 de 10 · Acciones más urgentes</div>
   <div class="split aside-right">
     <div>
       <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">Acciones prioritarias esperadas del CEPA</h3>
@@ -740,103 +820,17 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
   </div>
 </section>
 
-<!-- HALLAZGO 8 -->
-<section class="block on-navy">
-  <div class="hallazgo-num" aria-hidden="true">08</div>
-  <div class="label" style="color:var(--gold); margin-bottom:16px;">Hallazgo 8 de 10 · Cómo evalúan al colegio</div>
-  <div class="stat-row cols-2">
-    <div>
-      <div class="label" style="margin-bottom:14px;">Calidad del servicio educativo</div>
-      <div class="stat-num xl">69,4%</div>
-      <p class="lead" style="margin-top:20px;">Evaluación positiva de la calidad educativa general</p>
-    </div>
-    <div>
-      <div class="label" style="margin-bottom:14px;">Gestión de consultas y reclamos</div>
-      <div class="stat-num xl" style="color:var(--gold);">54,6%</div>
-      <p class="lead" style="margin-top:20px;">Evaluación positiva de la gestión de respuestas</p>
-    </div>
-  </div>
-  <div class="divider" style="margin:20px 0;"></div>
-  
-
-          <div class="callout">
-            <div class="label">📌 Lectura clave</div>
-        <p style="color:var(--ink-cream);">La calidad educativa se evalúa mejor que la gestión de consultas y reclamos: ahí hay una oportunidad clara de mejora para el Colegio y como CEPA un llamado a asumir nuestro rol mediador.</p></div>
-
-</section>
-
-<!-- HALLAZGO 9 (ciclos) -->
-<section class="block on-cream">
-  <div class="hallazgo-num" aria-hidden="true">09</div>
-  <div class="label" style="color:var(--gold-2); margin-bottom:16px;">Hallazgo 9 de 10 · Cada ciclo, su propia mirada</div>
-  <h2 style="font-size:var(--fs-h1); margin-bottom:32px; color:var(--ink-dark);">Una misma encuesta, distintas experiencias</h2>
-  <div class="ciclos-grid">
-    <div class="ciclo-card">
-      <div class="label">Prebásica</div>
-      <h3>La más optimista</h3>
-      <p>Mejor evaluación del colegio y de la calidad educativa. Preocupa el bienestar emocional de los niños.</p>
-    </div>
-    <div class="ciclo-card muted">
-      <div class="label">Primer Ciclo</div>
-      <h3>La más exigente en comunicación</h3>
-      <p>Pide más comunicación familia-colegio y mira con más exigencia la gestión institucional.</p>
-    </div>
-    <div class="ciclo-card muted">
-      <div class="label">Segundo Ciclo</div>
-      <h3>La más crítica</h3>
-      <p>Mayor participación en la encuesta y NPS más bajo. Pide representación real e incidencia.</p>
-    </div>
-    <div class="ciclo-card muted">
-      <div class="label">Enseñanza Media</div>
-      <h3>La que pide ser incluida</h3>
-      <p>Menor cobertura relativa, pero alta valoración de la participación familiar.</p>
-    </div>
-  </div>
-</section>
-
 <!-- HALLAZGO 10 (palabras) -->
 <section class="block on-navy">
   <div class="hallazgo-num" aria-hidden="true">10</div>
   <div class="label" style="color:var(--gold); margin-bottom:24px;">Hallazgo 10 de 10 · En palabras de los apoderados</div>
-        <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">En palabras de los apoderados</h3>
+        <h3 style="font-size:var(--fs-h2); font-weight:700; margin-bottom:20px;">Múltiples ideas y propuestas</h3>
 
-  <div class="split side-even">
-    <div>
-      <div class="label" style="text-align:center; margin-bottom:8px;">¿Qué esperas del nuevo CEPA?</div>
-      <div class="word-cloud" role="img" aria-label="Nube de palabras de las respuestas abiertas: Comunicación 48 menciones, Representación 27, Proactividad 19, Gestión 17, Apoyo 16, Compromiso 14, Comunidad 12, Transparencia 9, Participación 9, Actividades 8, Canalizar 6, Cercanía 6, Resultados 6, Calidad educativa 6, Bullying 5, Colaboración 5, Vinculación 5, Incidencia 4, Motivación 4, Información 3, Liderazgo 3, Organización 3, Unión 2.">
-        <span class="cloud-word" style="font-size:3.6rem; color:var(--gold);" title="Comunicación · 48 menciones">Comunicación</span>
-        <span class="cloud-word" style="font-size:2.1rem;" title="Apoyo · 16 menciones">Apoyo</span>
-        <span class="cloud-word" style="font-size:2.75rem; color:var(--gold);" title="Representación · 27 menciones">Representación</span>
-        <span class="cloud-word" style="font-size:1.85rem;" title="Comunidad · 12 menciones">Comunidad</span>
-        <span class="cloud-word" style="font-size:2.3rem;" title="Proactividad · 19 menciones">Proactividad</span>
-        <span class="cloud-word" style="font-size:1.6rem; color:var(--ink-cream-3);" title="Transparencia · 9 menciones">Transparencia</span>
-        <span class="cloud-word" style="font-size:2.18rem;" title="Gestión · 17 menciones">Gestión</span>
-        <span class="cloud-word" style="font-size:1.32rem; color:var(--ink-cream-3);" title="Cercanía · 6 menciones">Cercanía</span>
-        <span class="cloud-word" style="font-size:1.99rem;" title="Compromiso · 14 menciones">Compromiso</span>
-        <span class="cloud-word" style="font-size:1.32rem; color:var(--ink-cream-3);" title="Resultados · 6 menciones">Resultados</span>
-        <span class="cloud-word" style="font-size:1.6rem; color:var(--ink-cream-3);" title="Participación · 9 menciones">Participación</span>
-        <span class="cloud-word" style="font-size:1.32rem; color:var(--ink-cream-3);" title="Canalizar · 6 menciones">Canalizar</span>
-        <span class="cloud-word" style="font-size:1.32rem; color:var(--ink-cream-3);" title="Calidad educativa · 6 menciones">Calidad educativa</span>
-        <span class="cloud-word" style="font-size:1.5rem; color:var(--ink-cream-3);" title="Actividades · 8 menciones">Actividades</span>
-        <span class="cloud-word" style="font-size:1.2rem; color:var(--ink-cream-3);" title="Colaboración · 5 menciones">Colaboración</span>
-        <span class="cloud-word" style="font-size:1.2rem; color:var(--ink-cream-3);" title="Vinculación · 5 menciones">Vinculación</span>
-        <span class="cloud-word" style="font-size:1.2rem; color:var(--ink-cream-3);" title="Bullying · 5 menciones">Bullying</span>
-        <span class="cloud-word" style="font-size:1.08rem; color:var(--ink-cream-3);" title="Motivación · 4 menciones">Motivación</span>
-        <span class="cloud-word" style="font-size:1.08rem; color:var(--ink-cream-3);" title="Incidencia · 4 menciones">Incidencia</span>
-        <span class="cloud-word" style="font-size:0.93rem; color:var(--ink-cream-3);" title="Liderazgo · 3 menciones">Liderazgo</span>
-        <span class="cloud-word" style="font-size:0.93rem; color:var(--ink-cream-3);" title="Información · 3 menciones">Información</span>
-        <span class="cloud-word" style="font-size:0.93rem; color:var(--ink-cream-3);" title="Organización · 3 menciones">Organización</span>
-        <span class="cloud-word" style="font-size:0.8rem; color:var(--ink-cream-3);" title="Unión · 2 menciones">Unión</span>
-      </div>
-    </div>
-    <div>
-      <div class="label" style="margin-bottom:8px;">Ideas y propuestas</div>
-      <div class="quote-carousel" data-quote-carousel>
-        <div class="quote-slot"><blockquote>Convenios y talleres extendidos para la participación de apoderados también.</blockquote></div>
-        <div class="quote-slot"><blockquote>Proponer sanciones drástica frente a casos de bullying.</blockquote></div>
-        <div class="quote-slot"><blockquote>Más instancias para juntar dinero como apoderados para otorgar becas.</blockquote></div>
-      </div>
-    </div>
+
+  <div class="quote-carousel" data-quote-carousel>
+    <div class="quote-slot"><blockquote>Convenios y talleres extendidos para la participación de apoderados también.</blockquote></div>
+    <div class="quote-slot"><blockquote>Proponer sanciones drástica frente a casos de bullying.</blockquote></div>
+    <div class="quote-slot"><blockquote>Más instancias para juntar dinero como apoderados para otorgar becas.</blockquote></div>
   </div>
 </section>
 
@@ -848,17 +842,18 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
       <div class="rule"></div>
       <h2 style="font-size:var(--fs-h2); margin-bottom:28px;">Lo que aprendimos</h2>
       <div class="bullets">
-        <div><span>—</span><span>Una comunidad que quiere ser escuchada y ve al CEPA como un espacio posible para eso.</span></div>
+        
         <div><span>—</span><span>Las familias esperan representación, comunicación clara, bienestar, convivencia y acciones concretas.</span></div>
-        <div><span>—</span><span>Existen barreras reales para participar: tiempo, horarios y dudas sobre si su opinión incide.</span></div>
+        <div><span>—</span><span>Existen barreras reales para participar como tiempo y horarios, pero también dudas sobre si su opinión incide.</span></div>
         <div><span>—</span><span>La gestión de consultas y reclamos genera más tensión que la calidad educativa general.</span></div>
         <div><span>—</span><span>Cada ciclo escolar mira las cosas distinto — las respuestas deben considerar esas diferencias.</span></div>
+        <div><span>—</span><span>La comunidad del Compañía de María Seminario que quiere ser escuchada y ve al CEPA como un organismo articulador para lograr ese objetivo.</span></div>
       </div>
     </div>
     <div>
-      <div style="font-family:var(--f-display); font-weight:800; font-size:4rem; color:var(--gold); line-height:0.6; margin-bottom:16px;">"</div>
+     
       <h3 style="font-size:1.6rem; font-weight:600; letter-spacing:-0.01em; margin-bottom:20px;">El interés ya existe.</h3>
-      <p class="lead">El desafío es convertirlo en participación organizada, comunicación efectiva y representación real.</p>
+      <p class="lead">Nuestro desafío es convertirlo en participación organizada, comunicación efectiva y representación real.</p>
     </div>
   </div>
 </section>
@@ -920,7 +915,7 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
     update();
   }
 
-  // pie charts (Hallazgo 2): scroll-triggered reveal + hover/focus tooltip
+  // pie charts (Hallazgo 2, Hallazgo 6): scroll-triggered reveal + hover/focus tooltip
   document.querySelectorAll('.share-chart').forEach(function (shareChart) {
     var pieSvg = shareChart.querySelector('.pie-svg');
     var slices = shareChart.querySelectorAll('.pie-slice');
@@ -1006,11 +1001,11 @@ footer.close .sig { font-family: var(--f-mono); font-size: var(--fs-label); colo
       'Evaluación de nuevos profesores y mejoras académicas.',
       'Tener selecciones deportivas y participar en campeonatos.',
       'Charlas para toda la comunidad de expertos o líderes de opinión.',
-      'Participar en la toma de decisiones del colegio',
+      'Participar en la toma de decisiones del colegio.',
       'Uso de los espacios físicos del colegio después de clases.',
       'Realización de actividades familiares en el colegio',
-      'Reuniones con el director',
-      'Súpervigilar la instalación de nuevo PEI',
+      'Reuniones con el director.',
+      'Súpervigilar la instalación de nuevo PEI.',
       'Jornadas de salud mental para alumnos.',
       'Lograr que el colegio transparente su plan estratégico.',
       'Cambiar polera blanca por un color más fácil de mantener.',
